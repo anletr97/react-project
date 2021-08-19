@@ -1,30 +1,10 @@
-import { Button, Container, Select, TextField } from "@material-ui/core";
-import { InputLabel, FormControl, MenuItem } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import React, { useState } from "react";
-// import CategoryDialog from "components/CategoryDialog";
+import { Container } from "@material-ui/core";
+import CategoryInput from "components/Category/CategoryInput";
 import CategoryList from "components/Category/CategoryList";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "30ch",
-      },
-    },
-    input: {
-      height: 55,
-    },
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-  })
-);
+import Category from "interfaces/Category";
+import React, { useState } from "react";
 
 const ExpenseCategory = () => {
-  const classes = useStyles();
   const [categories, setCategories] = useState([
     {
       id: 1,
@@ -73,45 +53,15 @@ const ExpenseCategory = () => {
       ],
     },
   ]);
-  const [parentCate, setParentCate] = useState("TEST");
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setParentCate(event.target.value as string);
+  const addCategory = (task: Category) => {
+    console.log(task);
   };
 
   return (
     <Container maxWidth="md">
       <h1>Expense Category</h1>
-      <form className={classes.root}>
-        <FormControl className={classes.formControl} variant="outlined">
-          <InputLabel id="demo-simple-select-outlined-label">
-            Parent Category
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
-            value={parentCate}
-            onChange={handleChange}
-            label="Parent Category"
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <TextField
-            InputProps={{
-              className: classes.input,
-            }}
-            variant="outlined"
-            label="Category"
-          />
-        </FormControl>
-        <Button variant="contained" color="primary" className={classes.input}>
-          Add
-        </Button>
-      </form>
+      <CategoryInput onAdd={addCategory} />
       <CategoryList categories={categories} />
     </Container>
   );
