@@ -1,6 +1,6 @@
-import { Container, makeStyles } from "@material-ui/core";
+import { Container,  } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles'
 import React from "react";
-import Input from "../../components/Input";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +16,6 @@ const ExpenseTracker = () => {
 
   return (
     <Container className={classes.root}>
-      <Input />
     </Container>
   );
 };

@@ -1,8 +1,7 @@
-import React from "react";
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import SendIcon from "@material-ui/icons/Send";
+import { List, ListItem, ListItemText } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import ICategory from "interfaces/Category";
+import React from "react";
 
 interface ItemProps {
   category: ICategory;
@@ -30,7 +29,7 @@ const CategoryItem = ({ category }: ItemProps) => {
   const subList = category.children ? (
     category.children.map((child) => (
       <List component="div" disablePadding>
-        <ListItem button className={classes.nested}>
+        <ListItem key={child.id} button className={classes.nested}>
           <ListItemText primary={child.name} />
         </ListItem>
       </List>
