@@ -8,10 +8,10 @@ import {
   MenuItem,
   Checkbox,
   Button,
+  Card,
 } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import Category from 'interfaces/Category'
-
+import Category from "interfaces/Category";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,7 +34,7 @@ interface InputProps {
   onAdd: (category: Category) => void;
 }
 
-const CategoryInput = ({onAdd} : InputProps) => {
+const CategoryInput = ({ onAdd }: InputProps) => {
   const classes = useStyles();
 
   const [parentCate, setParentCate] = useState("10");
@@ -64,56 +64,58 @@ const CategoryInput = ({onAdd} : InputProps) => {
   };
 
   return (
-    <form className={classes.root} onSubmit={onSubmit}>
-      <FormControl className={classes.formControl} variant="outlined">
-        <InputLabel id="demo-simple-select-outlined-label">
-          Parent Category
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          value={parentCate}
-          onChange={handleSelectChange}
-          label="Parent Category"
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <TextField
-          InputProps={{
-            className: classes.input,
-          }}
-          variant="outlined"
-          label="Category"
-          value={name}
-          onChange={handleInputChange}
-        />
-      </FormControl>
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={isParent}
-            onChange={(e) => {
-              setIsParent(e.currentTarget.checked);
+    <Card className={classes.root}>
+      <form onSubmit={onSubmit}>
+        <FormControl className={classes.formControl} variant="outlined">
+          <InputLabel id="demo-simple-select-outlined-label">
+            Parent Category
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={parentCate}
+            onChange={handleSelectChange}
+            label="Parent Category"
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl className={classes.formControl}>
+          <TextField
+            InputProps={{
+              className: classes.input,
             }}
-            name="checkedB"
-            color="primary"
+            variant="outlined"
+            label="Category"
+            value={name}
+            onChange={handleInputChange}
           />
-        }
-        label="Is Parent"
-      />
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        className={classes.input}
-      >
-        Add
-      </Button>
-    </form>
+        </FormControl>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isParent}
+              onChange={(e) => {
+                setIsParent(e.currentTarget.checked);
+              }}
+              name="checkedB"
+              color="primary"
+            />
+          }
+          label="Is Parent"
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.input}
+        >
+          Add
+        </Button>
+      </form>
+    </Card>
   );
 };
 

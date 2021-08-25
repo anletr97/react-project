@@ -1,25 +1,22 @@
-import { Button, FormControl, TextField } from "@material-ui/core";
+import { Button, FormControl, TextField, Card } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import React from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "30ch",
-      },
+    cardContainer: {
+      display: "flex",
+      padding: 20,
+      height: 240,
     },
-    input: {
-      height: 55,
+    form: {
+      width: "100%",
+      paddingRight: 10,
     },
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
-    },
-    button: {
-      maxWidth: 50,
-      height: 55,
+      width: "100%",
     },
   })
 );
@@ -27,29 +24,25 @@ const useStyles = makeStyles((theme: Theme) =>
 const HabitInput = () => {
   const classes = useStyles();
   return (
-    <div className="card-container">
-      <form className={classes.root}>
+    <Card className={classes.cardContainer}>
+      <form className={classes.form}>
         <FormControl className={classes.formControl}>
-          <TextField
-            InputProps={{
-              className: classes.input,
-            }}
-            variant="outlined"
-            label="Habit name"
-            id="habitNameId"
-          />
+          <TextField variant="outlined" label="Habit Name" id="habitNameId" />
         </FormControl>
-
+        <FormControl className={classes.formControl}>
+          <TextField variant="outlined" label="Motivation" id="habitNameId" />
+        </FormControl>
         <Button
+          className={classes.formControl}
           type="submit"
           variant="contained"
           color="primary"
-          className={classes.button}
+          size="large"
         >
           Add
         </Button>
       </form>
-    </div>
+    </Card>
   );
 };
 
