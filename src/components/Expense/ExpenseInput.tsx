@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cardContainer: {
       display: "flex",
       padding: 20,
-      height: 400,
+      height: 350,
     },
     form: {
       width: "100%",
@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
     },
     input__number: {
-      align: "right",
     },
   })
 );
@@ -36,15 +35,11 @@ const ExpenseInput = () => {
   return (
     <Card className={classes.cardContainer}>
       <form className={classes.form}>
-        <FormControl
-          variant="outlined"
-          fullWidth
-          className={classes.formControl}
-        >
-          <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="amount">Amount</InputLabel>
           <Input
             className={classes.input__number}
-            id="standard-adornment-amount"
+            id="amount"
             //   value={values.amount}
             //   onChange={handleChange("amount")}
             endAdornment={<InputAdornment position="start">VND</InputAdornment>}
