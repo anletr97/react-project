@@ -1,11 +1,12 @@
 import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { HabitInput } from "components/Habit";
-import React from "react";
+import React, { Fragment } from "react";
 
 function HabitTracker() {
   return (
-      <div className="card-container">
+    <Fragment>
+      <div className="card-header">
         <h1>Habit Tracker</h1>
         <Button
           className="btn"
@@ -15,8 +16,9 @@ function HabitTracker() {
         >
           Add Habit
         </Button>
-        <HabitInput />
       </div>
+      <HabitInput />
+    </Fragment>
   );
 }
 

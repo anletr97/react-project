@@ -1,22 +1,26 @@
-import { Container,  } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles'
-import React from "react";
+import { Button, Container } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-}));
+import React, { Fragment } from "react";
+
+import ExpenseInput from "components/Expense/ExpenseInput";
 
 const ExpenseTracker = () => {
-  const classes = useStyles();
-
   return (
-    <Container className={classes.root}>
-    </Container>
+    <Fragment>
+      <div className="card-header">
+        <h1>Expense Tracker</h1>
+        <Button
+          className="btn"
+          variant="contained"
+          color="primary"
+          startIcon={<AddIcon />}
+        >
+          Add Habit
+        </Button>
+      </div>
+      <ExpenseInput />
+    </Fragment>
   );
 };
 

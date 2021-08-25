@@ -1,21 +1,20 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Typography,
+  CssBaseline,
+} from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/";
 import MenuIcon from "@material-ui/icons/Menu";
-import React from "react";
-
-const drawerWidth = 240;
+import React, { Fragment } from "react";
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
     // Make the app bar z-index always one more than the drawer z-index
     zIndex: theme.zIndex.drawer + 1,
-    [theme.breakpoints.up("sm")]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
   },
   menuButton: {
-    marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
       display: "none",
     },
@@ -29,10 +28,10 @@ interface HeaderProps {
 const Header = ({ onClick }: HeaderProps) => {
   const classes = useStyles();
 
-
   return (
     <div>
-      <AppBar position="relative" className={classes.appBar}>
+      <CssBaseline />
+      <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
           <IconButton
             color="inherit"

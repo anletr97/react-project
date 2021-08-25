@@ -5,6 +5,7 @@ import {
   SleepTracker,
   ExpenseCategory,
 } from "../pages";
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 
 export const Routes = [
   {
@@ -28,7 +29,7 @@ export const Routes = [
   {
     path: PATH.EXPENSE_CATEGORY,
     text: MENU_ITEM.EXPENSE_CATEGORY,
-    icon: "icon",
+    icon: LocalAtmIcon,
     component: ExpenseCategory,
   },
 ];
