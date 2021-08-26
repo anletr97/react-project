@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import { HabitInput } from "components/Habit";
+import { HabitInput } from "components/HabitTracker";
 import React, { Fragment } from "react";
 
 function HabitTracker() {

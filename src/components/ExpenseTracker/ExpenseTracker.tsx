@@ -1,38 +1,33 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 
 import Button from "components/Button";
-import { ExpenseInput, ExpenseList } from "components/Expense";
+import ExpenseInput from "./ExpenseInput";
+import ExpenseList from "./ExpenseList";
+import { IExpense } from "models";
+import expenseApi from "api/expense.api";
+import { DataUtils } from "utils";
 
 const ExpenseTracker = () => {
   const [showInput, setShowInput] = useState(false);
-  const [expenses, setExpenses] = useState([
-    {
-      id: "1",
-      name: "Meal",
-      amount: 30000,
-      date: "20201015",
-    },
-    {
-      id: "2",
-      name: "Drink",
-      amount: 30000,
-      date: "20201015",
-    },
-    {
-      id: "3",
-      name: "Shopping",
-      amount: 30000,
-      date: "20201015",
-    },
-    {
-      id: "4",
-      name: "Meal",
-      amount: 30000,
-      date: "20201015",
-    },
-  ]);
+  const [expenses, setExpenses] = useState<IExpense[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const expenses = await fetchExpenses();
+      setExpenses(expenses);
+    };
+    fetchData();
+  }, []);
+
+  const fetchExpenses = async () => {
+    let arr: any[] = [];
+    await expenseApi.fetch().then((res) => {
+      arr = DataUtils.deepCloneArray(res);
+    });
+    return arr;
+  };
 
   return (
     <Fragment>

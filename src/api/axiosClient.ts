@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://localhost:5000",
+  baseURL: "http://localhost:5000",
   headers: {
     "content-type": "application/json",
   },
@@ -13,10 +13,8 @@ axiosClient.interceptors.request.use(async (conf) => {
   return conf;
 });
 
-axiosClient.interceptors.response.use((res) => {
-  if (res && res.data) {
-    return res.data;
-  }
+axiosClient.interceptors.response.use((res: AxiosResponse) => {
+  return res.data;
 });
 
 export default axiosClient;

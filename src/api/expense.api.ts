@@ -1,15 +1,16 @@
+import { IExpense, ListResponse } from "../models";
 import axiosClient from "./axiosClient";
 
-export const EXPENSES_API_URL = "http://localhost:5000/expenses";
+export const URL = "/expenses";
 
 const expenseApi = {
   // Fetch all task
-  fetch: () => {
-    return axiosClient.get(EXPENSES_API_URL);
+  fetch(): Promise<IExpense[]> {
+    return axiosClient.get(URL);
   },
   // Get task by Id
   getTaskById: (id: string) => {
-    return axiosClient.get(`${EXPENSES_API_URL}/${id}`);
+    return axiosClient.get(`${URL}/${id}`);
   },
   //   // Delete task
   //   delete: (id) => {

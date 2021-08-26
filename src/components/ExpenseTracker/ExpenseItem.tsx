@@ -1,6 +1,6 @@
 import { TableRow, TableCell } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import IExpense from "interfaces/Expense";
+import {IExpense} from "models";
 import React from "react";
 
 const StyledTableCell = withStyles((theme) => ({

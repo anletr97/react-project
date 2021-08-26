@@ -7,7 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import IExpense from "interfaces/Expense";
+import {IExpense} from "models";
 import ExpenseItem from "./ExpenseItem";
 import React from "react";
 
