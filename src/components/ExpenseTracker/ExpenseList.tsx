@@ -10,6 +10,7 @@ import {
 import { IExpense } from "models";
 import ExpenseItem from "./ExpenseItem";
 import React from "react";
+import { NumberUtils } from "utils/number-utils";
 
 type ListProps = {
   expenses: IExpense[];
@@ -18,16 +19,16 @@ type ListProps = {
 const ExpenseList = (props: ListProps) => {
   const totalAmt = props.expenses
     .map((expense) => expense.amount)
-    .reduce((total, amount) => total + amount);
+    .reduce((total, amount) => total + amount, 0);
 
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
+            <TableCell align="center">Date</TableCell>
             <TableCell align="left">Description</TableCell>
             <TableCell align="right">Amount (VND)</TableCell>
-            <TableCell align="center">Date</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -35,13 +36,18 @@ const ExpenseList = (props: ListProps) => {
           {props.expenses.map((expense) => (
             <ExpenseItem expense={expense} />
           ))}
-          <TableRow>
-            <TableCell colSpan={1}>Total</TableCell>
-            <TableCell align="right" className="expense__total">
-              {totalAmt}
-            </TableCell>
-          </TableRow>
         </TableBody>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center" colSpan={2} className="expense__total">
+              Total
+            </TableCell>
+            <TableCell align="right" className="expense__total">
+              {NumberUtils.numberWithCommas(totalAmt)}
+            </TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
       </Table>
     </TableContainer>
   );

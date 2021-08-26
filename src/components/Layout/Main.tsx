@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     left: "20px",
     marginTop: "50px",
     paddingTop: "20px",
-    maxWidth: "720px",
+    maxWidth: "917px",
   },
 }));
 

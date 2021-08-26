@@ -1,4 +1,4 @@
-import { IExpense, ListResponse } from "../models";
+import { IExpense } from "../models";
 import axiosClient from "./axiosClient";
 
 export const URL = "/expenses";
@@ -20,9 +20,9 @@ const expenseApi = {
   //   update: (id, body) => {
   //     return axiosClient.put(`${API_TASK_URL}/${id}`, body);
   //   },
-  //   // Add task
-  //   add: (body) => {
-  //     return axiosClient.post(`${API_TASK_URL}`, body);
-  //   },
+  // Add task
+  add: (body: IExpense) => {
+    return axiosClient.post(`${URL}`, body);
+  },
 };
 export default expenseApi;
