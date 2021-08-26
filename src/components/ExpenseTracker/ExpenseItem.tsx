@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { IExpense } from "models";
 import React from "react";
 import { DateUtils } from "utils/date-utils";
+import { NumberUtils } from "utils/number-utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -10,7 +11,7 @@ const StyledTableCell = withStyles((theme) => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 16,
   },
 }))(TableCell);
 
@@ -30,7 +31,9 @@ const ExpenseItem = ({ expense }: ItemProps) => {
   return (
     <StyledTableRow key={expense.id}>
       <StyledTableCell align="left">{expense.name}</StyledTableCell>
-      <StyledTableCell align="right">{expense.amount}</StyledTableCell>
+      <StyledTableCell align="right">
+        {NumberUtils.numberWithCommas(expense.amount)}
+      </StyledTableCell>
       <StyledTableCell align="center">
         {DateUtils.toDate(expense.date)}
       </StyledTableCell>
