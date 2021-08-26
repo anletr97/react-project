@@ -30,12 +30,12 @@ type ItemProps = {
 const ExpenseItem = ({ expense }: ItemProps) => {
   return (
     <StyledTableRow key={expense.id}>
+      <StyledTableCell align="center">
+        {DateUtils.toDate(expense.date)}
+      </StyledTableCell>
       <StyledTableCell align="left">{expense.name}</StyledTableCell>
       <StyledTableCell align="right">
         {NumberUtils.numberWithCommas(expense.amount)}
-      </StyledTableCell>
-      <StyledTableCell align="center">
-        {DateUtils.toDate(expense.date)}
       </StyledTableCell>
       <StyledTableCell align="right">Action</StyledTableCell>
     </StyledTableRow>

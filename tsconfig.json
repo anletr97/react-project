@@ -17,5 +17,6 @@
     "jsx": "react-jsx",
     "baseUrl": "src"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "typings": "./dist/types/types.d.ts"
 }

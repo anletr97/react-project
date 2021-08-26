@@ -1,14 +1,14 @@
+import { createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
-import expenseApi from "api/expense.api";
+import expenseApi from "api/expenseApi";
 import Button from "components/Layout/Button";
+import { IExpense } from "models";
 import React, { Fragment, useEffect, useState } from "react";
 import { DataUtils } from "utils";
-
-import { IExpense } from "models";
+import { DateUtils } from "utils/date-utils";
 import ExpenseInput from "./ExpenseInput";
 import ExpenseList from "./ExpenseList";
-import { Card, createStyles, makeStyles, Theme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,8 +41,28 @@ const ExpenseTracker = () => {
     return arr;
   };
 
+  const addTransaction: AddExpenseForm = (name, amount, date) => {
+    // const expense: IExpense =;
+    // TODO create expense
+    // expenseApi.add(expense).then((res) => {
+    //   ret = res.data;
+    // });
+    setExpenses([
+      ...expenses,
+      {
+        id: "5",
+        name,
+        amount,
+        date: DateUtils.toTimeStamp(date),
+        created_at: DateUtils.toTimeStamp(DateUtils.getNow()),
+        updated_at: DateUtils.toTimeStamp(DateUtils.getNow()),
+      },
+    ]);
+    // re-render
+  };
+
   return (
-    <Card className={classes.cardContainer}>
+    <Fragment>
       <div className="card-header">
         <h1>Expense Tracker</h1>
         <Button
@@ -52,9 +72,17 @@ const ExpenseTracker = () => {
           onClick={() => setShowInput(!showInput)}
         />
       </div>
-      <Fragment>{showInput && <ExpenseInput />}</Fragment>
-      <ExpenseList expenses={expenses} />
-    </Card>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={12}>
+          <Fragment>
+            {showInput && <ExpenseInput onAdd={addTransaction} />}
+          </Fragment>
+        </Grid>
+        <Grid item xs={12} md={12}>
+          <ExpenseList expenses={expenses} />
+        </Grid>
+      </Grid>
+    </Fragment>
   );
 };
 

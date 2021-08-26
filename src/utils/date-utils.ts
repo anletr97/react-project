@@ -30,6 +30,16 @@ export class DateUtils {
   };
 
   /**
+   *
+   * @param date
+   * @returns
+   */
+  static toTimeStamp = (date: string): number => {
+    // return date in milisecond
+    return Date.parse(date);
+  };
+
+  /**
    * TODO
    * @param date
    * @returns
@@ -38,5 +48,13 @@ export class DateUtils {
     if (!isNull(date)) {
       return "haha";
     }
+  };
+
+  static getNow = (): string => {
+    let date = new Date();
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const day = date.getDate();
+    return year + "-" + month + "-" + day;
   };
 }
