@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { NavLink } from "react-router-dom";
-import { Routes } from "../routes";
+import { Routes } from "routes";
 
 // Styling
 const useStyles = makeStyles((theme) =>

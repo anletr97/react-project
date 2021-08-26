@@ -1,7 +1,8 @@
 import { TableRow, TableCell } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import {IExpense} from "models";
+import { IExpense } from "models";
 import React from "react";
+import { DateUtils } from "utils/date-utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -30,7 +31,9 @@ const ExpenseItem = ({ expense }: ItemProps) => {
     <StyledTableRow key={expense.id}>
       <StyledTableCell align="left">{expense.name}</StyledTableCell>
       <StyledTableCell align="right">{expense.amount}</StyledTableCell>
-      <StyledTableCell align="center">{expense.date}</StyledTableCell>
+      <StyledTableCell align="center">
+        {DateUtils.toDate(expense.date)}
+      </StyledTableCell>
       <StyledTableCell align="right">Action</StyledTableCell>
     </StyledTableRow>
   );
