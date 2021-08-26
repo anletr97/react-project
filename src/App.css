@@ -22,3 +22,7 @@
   padding: 30px;
   border-radius: 5px;
 }
+
+.expense__total {
+  font-size: 16;
+}

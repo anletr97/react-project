@@ -7,7 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import {IExpense} from "models";
+import { IExpense } from "models";
 import ExpenseItem from "./ExpenseItem";
 import React from "react";
 
@@ -16,6 +16,10 @@ type ListProps = {
 };
 
 const ExpenseList = (props: ListProps) => {
+  const totalAmt = props.expenses
+    .map((expense) => expense.amount)
+    .reduce((total, amount) => total + amount);
+
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
@@ -31,6 +35,12 @@ const ExpenseList = (props: ListProps) => {
           {props.expenses.map((expense) => (
             <ExpenseItem expense={expense} />
           ))}
+          <TableRow>
+            <TableCell colSpan={1}>Total</TableCell>
+            <TableCell align="right" className="expense__total">
+              {totalAmt}
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
