@@ -14,9 +14,10 @@ import { NumberUtils } from "utils/number-utils";
 
 type ListProps = {
   expenses: IExpense[];
+  onDelete: () => void;
 };
 
-const ExpenseList = (props: ListProps) => {
+const ExpenseList: React.FC<ListProps> = (props) => {
   const totalAmt = props.expenses
     .map((expense) => expense.amount)
     .reduce((total, amount) => total + amount, 0);
@@ -34,7 +35,7 @@ const ExpenseList = (props: ListProps) => {
         </TableHead>
         <TableBody>
           {props.expenses.map((expense) => (
-            <ExpenseItem expense={expense} />
+            <ExpenseItem expense={expense} onDelete={props.onDelete}/>
           ))}
         </TableBody>
         <TableHead>
