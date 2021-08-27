@@ -9,8 +9,13 @@ import {
   TextField,
 } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { IExpense } from "models";
-import React, { useState } from "react";
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from "@material-ui/pickers";
+import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
+import DateFnsUtils from "@date-io/date-fns";
+import React, { useState, FocusEventHandler } from "react";
 import { DateUtils } from "utils/date-utils";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,7 +45,7 @@ type InputProps = {
 
 const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
   const classes = useStyles();
-  const [date, setDate] = useState<string>(DateUtils.getNow());
+  const [date, setDate] = useState<string>(DateUtils.getCurrentDateStr());
   const [amount, setAmount] = useState<number>(0);
   const [name, setName] = useState<string>("");
 
@@ -48,17 +53,9 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
     e.preventDefault();
 
     onAdd(name, amount, date);
-
-    // setDate(""); //set date = today
-    // setName("");
+    setName("");
     setAmount(0);
   };
-
-  const currentDate = DateUtils.getNow();
-  console.log(
-    "🚀 ~ file: ExpenseInput.tsx ~ line 59 ~ currentDate",
-    currentDate
-  );
 
   const handleNameChange: TChangeEvent = (e) => {
     setName(e.target.value);
@@ -68,9 +65,13 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
     setAmount(Number(e.target.value));
   };
 
-  const handleDateChange: TChangeEvent = (e) => {
-    setDate(e.target.value);
+  const handleDateChange = (date: MaterialUiPickersDate) => {
+    setDate(DateUtils.dateToStr(date));
   };
+
+  const handleAddCommas = (e: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>) => {
+    setAmount(parseInt(parseInt(e.toString()).toLocaleString('en')))
+  }
 
   return (
     <Card className={classes.cardContainer}>
@@ -82,19 +83,21 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
               required={true}
               size="small"
             >
-              <TextField
-                required={true}
-                id="date"
-                label="Date"
-                type="date"
-                value={date}
-                defaultValue={currentDate}
-                onChange={handleDateChange}
-                className={classes.formControl}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="yyyy/MM/dd"
+                  margin="normal"
+                  id="expense-date"
+                  label="Expense Date"
+                  value={date}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                />
+              </MuiPickersUtilsProvider>
             </FormControl>
           </Grid>
 

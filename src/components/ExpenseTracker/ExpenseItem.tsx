@@ -1,9 +1,11 @@
 import { TableRow, TableCell } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+import { Button } from "components/Layout";
 import { IExpense } from "models";
 import React from "react";
 import { DateUtils } from "utils/date-utils";
 import { NumberUtils } from "utils/number-utils";
+import CloseIcon from "@material-ui/icons/Close";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -25,19 +27,22 @@ const StyledTableRow = withStyles((theme) => ({
 
 type ItemProps = {
   expense: IExpense;
+  onDelete: (id: string) => void;
 };
 
-const ExpenseItem = ({ expense }: ItemProps) => {
+const ExpenseItem: React.FC<ItemProps> = (props) => {
   return (
-    <StyledTableRow key={expense.id}>
+    <StyledTableRow key={props.expense.id}>
       <StyledTableCell align="center">
-        {DateUtils.toDate(expense.date)}
+        {DateUtils.timestampToDateStr(props.expense.date)}
       </StyledTableCell>
-      <StyledTableCell align="left">{expense.name}</StyledTableCell>
+      <StyledTableCell align="left">{props.expense.name}</StyledTableCell>
       <StyledTableCell align="right">
-        {NumberUtils.numberWithCommas(expense.amount)}
+        {NumberUtils.numberWithCommas(props.expense.amount)}
       </StyledTableCell>
-      <StyledTableCell align="right">Action</StyledTableCell>
+      <StyledTableCell align="right">
+        <CloseIcon onClick={() => props.onDelete(props.expense.id)}/>
+      </StyledTableCell>
     </StyledTableRow>
   );
 };

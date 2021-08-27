@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ExpenseTracker = () => {
+const ExpenseTracker: React.FC = () => {
   const classes = useStyles();
   const [showInput, setShowInput] = useState(false);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
@@ -43,22 +43,25 @@ const ExpenseTracker = () => {
 
   const addTransaction: AddExpenseForm = (name, amount, date) => {
     // const expense: IExpense =;
-    // TODO create expense
-    // expenseApi.add(expense).then((res) => {
-    //   ret = res.data;
-    // });
-    setExpenses([
-      ...expenses,
-      {
-        id: "5",
-        name,
-        amount,
-        date: DateUtils.toTimeStamp(date),
-        created_at: DateUtils.toTimeStamp(DateUtils.getNow()),
-        updated_at: DateUtils.toTimeStamp(DateUtils.getNow()),
-      },
-    ]);
+    const expense = {
+      id: "5",
+      name,
+      amount,
+      date: DateUtils.strToTimeStamp(date),
+      created_at: DateUtils.strToTimeStamp(DateUtils.getCurrentDateStr()),
+      updated_at: DateUtils.strToTimeStamp(DateUtils.getCurrentDateStr()),
+    };
+
+    expenseApi.add(expense).then((res) => {
+      alert("added");
+    });
+
+    setExpenses([expense, ...expenses]);
     // re-render
+  };
+
+  const deleteTransaction = (id: string) => {
+    console.log("delete clicked: ", id);
   };
 
   return (
@@ -79,7 +82,7 @@ const ExpenseTracker = () => {
           </Fragment>
         </Grid>
         <Grid item xs={12} md={12}>
-          <ExpenseList expenses={expenses} />
+          <ExpenseList expenses={expenses} onDelete={deleteTransaction} />
         </Grid>
       </Grid>
     </Fragment>

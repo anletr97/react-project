@@ -20,7 +20,7 @@ export class DateUtils {
    * @param timestamp
    * @returns String
    */
-  static toDate = (timestamp: number): string => {
+  static timestampToDateStr = (timestamp: number): string => {
     let date = new Date(timestamp);
     const year = date.getFullYear();
     const month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -30,31 +30,37 @@ export class DateUtils {
   };
 
   /**
-   *
-   * @param date
+   * Convert Date string into timestamp
+   * @param date String
    * @returns
    */
-  static toTimeStamp = (date: string): number => {
+  static strToTimeStamp = (date: string): number => {
     // return date in milisecond
     return Date.parse(date);
   };
 
   /**
-   * TODO
-   * @param date
-   * @returns
+   * Get Today String
+   * @returns Date string format "yyyy-MM-dd"
    */
-  static fortmatDate = (date: Date) => {
-    if (!isNull(date)) {
-      return "haha";
-    }
-  };
-
-  static getNow = (): string => {
+  static getCurrentDateStr = (): string => {
     let date = new Date();
     const year = date.getFullYear();
     const month = ("0" + (date.getMonth() + 1)).slice(-2);
     const day = date.getDate();
-    return year + "-" + month + "-" + day;
+    return year + "/" + month + "/" + day;
+  };
+
+  /**
+   *
+   * @param date
+   * @returns
+   */
+  static dateToStr = (date: Date | null): string => {
+    const year = date?.getFullYear();
+    const _month = date?.getMonth() ? date.getMonth() + 1 : 1;
+    const month: string | null = ("0" + _month).slice(-2);
+    const day = date?.getDate();
+    return year + "/" + month + "/" + day;
   };
 }
