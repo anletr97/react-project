@@ -10,18 +10,7 @@ import { DateUtils } from "utils/date-utils";
 import ExpenseInput from "./ExpenseInput";
 import ExpenseList from "./ExpenseList";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    cardContainer: {
-      padding: 20,
-      width: "100%",
-      height: "100%",
-    },
-  })
-);
-
 const ExpenseTracker: React.FC = () => {
-  const classes = useStyles();
   const [showInput, setShowInput] = useState(false);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
 
@@ -44,7 +33,6 @@ const ExpenseTracker: React.FC = () => {
   const addTransaction: AddExpenseForm = (name, amount, date) => {
     // const expense: IExpense =;
     const expense = {
-      id: "5",
       name,
       amount,
       date: DateUtils.strToTimeStamp(date),
@@ -53,15 +41,15 @@ const ExpenseTracker: React.FC = () => {
     };
 
     expenseApi.add(expense).then((res) => {
-      alert("added");
+      setExpenses([res, ...expenses]);
     });
 
-    setExpenses([expense, ...expenses]);
     // re-render
   };
 
-  const deleteTransaction = (id: string) => {
-    console.log("delete clicked: ", id);
+  const deleteTransaction = async (id?: string) => {
+    await expenseApi.delete(id);
+    setExpenses(expenses.filter((expense) => expense.id !== id));
   };
 
   return (
