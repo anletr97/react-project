@@ -22,6 +22,9 @@ const ExpenseTracker: React.FC = () => {
     fetchData();
   }, []);
 
+  /**
+   * Fetch expense to display
+   */
   const fetchExpenses = async () => {
     let arr: any[] = [];
     await expenseApi.fetch().then((res) => {
@@ -30,7 +33,7 @@ const ExpenseTracker: React.FC = () => {
     return arr;
   };
 
-  const addTransaction: AddExpenseForm = (name, amount, date) => {
+  const addTransaction: AddExpenseForm = async (name, amount, date) => {
     // const expense: IExpense =;
     const expense = {
       name,
@@ -40,7 +43,7 @@ const ExpenseTracker: React.FC = () => {
       updated_at: DateUtils.strToTimeStamp(DateUtils.getCurrentDateStr()),
     };
 
-    expenseApi.add(expense).then((res) => {
+    await expenseApi.add(expense).then((res) => {
       setExpenses([res, ...expenses]);
     });
 
@@ -65,9 +68,7 @@ const ExpenseTracker: React.FC = () => {
       </div>
       <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
-          <Fragment>
-            {showInput && <ExpenseInput onAdd={addTransaction} />}
-          </Fragment>
+          <Fragment>{showInput && <ExpenseInput onAdd={addTransaction} />}</Fragment>
         </Grid>
         <Grid item xs={12} md={12}>
           <ExpenseList expenses={expenses} onDelete={deleteTransaction} />

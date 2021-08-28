@@ -11,6 +11,22 @@
       "name": "Meal",
       "amount": 30000,
       "date": 1629969362000
+    },
+    {
+      "name": "Internet",
+      "amount": 70000,
+      "date": 1630083600000,
+      "created_at": 1630083600000,
+      "updated_at": 1630083600000,
+      "id": "peh6ppe"
+    },
+    {
+      "name": "Meal",
+      "amount": 30000,
+      "date": 1630083600000,
+      "created_at": 1630083600000,
+      "updated_at": 1630083600000,
+      "id": "flOQTbY"
     }
   ]
 }

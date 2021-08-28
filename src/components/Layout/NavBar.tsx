@@ -1,24 +1,18 @@
 import React, { useState } from "react";
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Toolbar,
-} from "@material-ui/core";
+import { Drawer, List, ListItem, ListItemText, Toolbar } from "@material-ui/core";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { NavLink } from "react-router-dom";
 import { Routes } from "routes";
 
+const drawerWidth = 240;
 // Styling
 const useStyles = makeStyles((theme) =>
   createStyles({
-    root: {
-      //backgroundColor: theme.palette.background.paper,
-      display: "flex",
-    },
     drawer: {
-      flexShrink: 0,
+      [theme.breakpoints.up("sm")]: {
+        width: drawerWidth,
+        flexShrink: 0,
+      },
     },
     drawerContainer: {
       overflow: "auto",

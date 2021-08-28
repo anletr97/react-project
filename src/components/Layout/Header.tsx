@@ -1,18 +1,17 @@
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Typography,
-  CssBaseline,
-} from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography, CssBaseline } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { Fragment } from "react";
 
+const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
     // Make the app bar z-index always one more than the drawer z-index
     zIndex: theme.zIndex.drawer + 1,
+    [theme.breakpoints.up("sm")]: {
+      // width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
   },
   menuButton: {
     [theme.breakpoints.up("sm")]: {

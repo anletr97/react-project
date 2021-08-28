@@ -16,6 +16,10 @@ const expenseApi = {
   delete: (id?: string) => {
     return axiosClient.delete(`${URL}/${id}`);
   },
+  // Get transaction by date
+  getByDate(date: string) {
+    return axiosClient.get(`${URL}/${date}`);
+  },
   //   // Update task
   //   update: (id, body) => {
   //     return axiosClient.put(`${API_TASK_URL}/${id}`, body);
