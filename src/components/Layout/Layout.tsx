@@ -4,10 +4,17 @@ import React, { Fragment } from "react";
 import Header from "./Header";
 import Main from "./Main";
 import NavBar from "./NavBar";
+import LeftSidebar from "./LeftSidebar";
+import RightSidebar from "./RightSidebar";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    display: "flex",
+    // display: "flex",
+  },
+  right: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
 }));
 
@@ -26,12 +33,17 @@ const Layout = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Header onClick={handleDrawerToggle} />
+      <NavBar />
+      <Grid container>
+        <Grid item sm={2} xs={2}>
+          <LeftSidebar />
         </Grid>
-        <NavBar />
-        <Main />
+        <Grid item sm={7} xs={10}>
+          <Main />
+        </Grid>
+        <Grid item sm={3} className={classes.right}>
+          <RightSidebar />
+        </Grid>
       </Grid>
     </div>
   );

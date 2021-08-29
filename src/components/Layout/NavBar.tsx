@@ -1,23 +1,22 @@
-import React, { useState } from "react";
-import { Drawer, List, ListItem, ListItemText, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { NavLink } from "react-router-dom";
-import { Routes } from "routes";
+import React, { useState } from "react";
 
-const drawerWidth = 240;
 // Styling
 const useStyles = makeStyles((theme) =>
   createStyles({
-    drawer: {
+    logoLg: {
+      display: "none",
       [theme.breakpoints.up("sm")]: {
-        width: drawerWidth,
-        flexShrink: 0,
+        display: "block",
       },
     },
-    drawerContainer: {
-      overflow: "auto",
+    logoSm: {
+      display: "block",
+      [theme.breakpoints.up("sm")]: {
+        display: "none",
+      },
     },
-    toolbar: theme.mixins.toolbar,
   })
 );
 
@@ -26,24 +25,34 @@ const NavBar = () => {
   const [open] = useState(true);
 
   return (
-    <Drawer className={classes.drawer} variant="permanent">
-      <Toolbar />
-      <div className={classes.drawerContainer}>
-        <List>
-          {Routes.map((route) => (
-            <ListItem
-              button
-              key={route.path}
-              component={NavLink}
-              to={route.path}
-              // onClick={props.onItemClick}
-            >
-              <ListItemText primary={route.text} />
-            </ListItem>
-          ))}
-        </List>
-      </div>
-    </Drawer>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" className={classes.logoLg}>
+          Online Planner
+        </Typography>
+        <Typography variant="h6" className={classes.logoSm}>
+          matmoong
+        </Typography>
+      </Toolbar>
+    </AppBar>
+    // <Drawer className={classes.drawer} variant="permanent">
+    //   <Toolbar />
+    //   <div className={classes.drawerContainer}>
+    //     <List>
+    //       {Routes.map((route) => (
+    //         <ListItem
+    //           button
+    //           key={route.path}
+    //           component={NavLink}
+    //           to={route.path}
+    //           // onClick={props.onItemClick}
+    //         >
+    //           <ListItemText primary={route.text} />
+    //         </ListItem>
+    //       ))}
+    //     </List>
+    //   </div>
+    // </Drawer>
   );
 };
 
