@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) =>
 
 const NavBar = () => {
   const classes = useStyles();
-  const [open, setOpen] = useState(true);
+  const [open] = useState(true);
 
   return (
     <Drawer className={classes.drawer} variant="permanent">
