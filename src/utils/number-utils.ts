@@ -1,5 +1,9 @@
+import { CommonUtils } from "utils";
+
 export class NumberUtils {
   static numberWithCommas = (number: number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return CommonUtils.isNumber(number)
+      ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      : "";
   };
 }

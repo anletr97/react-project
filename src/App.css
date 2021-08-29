@@ -23,3 +23,7 @@
   padding: 30px;
   border-radius: 5px;
 }
+
+.cardContainer {
+  height: 400px;
+}

@@ -1,4 +1,3 @@
-import { isNull } from "utils";
 /**
  *  Common functions for hanlding Date type
  *

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cardContainer: {
       display: "flex",
       padding: 20,
-      height: 350,
+      // height: 350,
       marginBottom: 20,
     },
     form: {
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     formControl: {
       minWidth: 120,
+      marginBottom: 20,
       width: "100%",
     },
     input__number: {},
