@@ -9,10 +9,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import {
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from "@material-ui/pickers";
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import DateFnsUtils from "@date-io/date-fns";
 import React, { useState, FocusEventHandler } from "react";
@@ -23,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cardContainer: {
       display: "flex",
       padding: 20,
-      height: 250,
+      // height: 350,
       marginBottom: 20,
     },
     form: {
@@ -31,8 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingRight: 10,
     },
     formControl: {
-      margin: theme.spacing(1),
       minWidth: 120,
+      marginBottom: 20,
       width: "100%",
     },
     input__number: {},
@@ -69,20 +66,18 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
     setDate(DateUtils.dateToStr(date));
   };
 
-  const handleAddCommas = (e: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>) => {
-    setAmount(parseInt(parseInt(e.toString()).toLocaleString('en')))
-  }
+  const handleAddCommas = (
+    e: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setAmount(parseInt(parseInt(e.toString()).toLocaleString("en")));
+  };
 
   return (
     <Card className={classes.cardContainer}>
       <form className={classes.form} onSubmit={onSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={12}>
-            <FormControl
-              className={classes.formControl}
-              required={true}
-              size="small"
-            >
+            <FormControl className={classes.formControl} required={true} size="small">
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
                   disableToolbar
@@ -102,11 +97,7 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <FormControl
-              className={classes.formControl}
-              required={true}
-              size="small"
-            >
+            <FormControl className={classes.formControl} required={true} size="small">
               <TextField
                 label="Category"
                 required={true}
@@ -124,21 +115,21 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
                 value={amount}
                 //   onChange={handleChange("amount")}
                 onChange={handleAmountChange}
-                endAdornment={
-                  <InputAdornment position="start">VND</InputAdornment>
-                }
+                endAdornment={<InputAdornment position="start">VND</InputAdornment>}
               />
             </FormControl>
           </Grid>
-          <Button
-            className={classes.formControl}
-            type="submit"
-            variant="contained"
-            color="primary"
-            size="large"
-          >
-            Add
-          </Button>
+          <Grid item xs={12} md={12}>
+            <Button
+              className={classes.formControl}
+              type="submit"
+              variant="contained"
+              color="primary"
+              size="large"
+            >
+              Add
+            </Button>
+          </Grid>
         </Grid>
       </form>
     </Card>

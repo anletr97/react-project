@@ -12,16 +12,20 @@ const expenseApi = {
   getTaskById: (id: string) => {
     return axiosClient.get(`${URL}/${id}`);
   },
-  //   // Delete task
-  //   delete: (id) => {
-  //     return axiosClient.delete(`${API_TASK_URL}/${id}`);
-  //   },
+  // Delete task
+  delete: (id?: string) => {
+    return axiosClient.delete(`${URL}/${id}`);
+  },
+  // Get transaction by date
+  getByDate(date: string) {
+    return axiosClient.get(`${URL}/${date}`);
+  },
   //   // Update task
   //   update: (id, body) => {
   //     return axiosClient.put(`${API_TASK_URL}/${id}`, body);
   //   },
   // Add task
-  add: (body: IExpense) => {
+  add(body: IExpense): Promise<IExpense> {
     return axiosClient.post(`${URL}`, body);
   },
 };

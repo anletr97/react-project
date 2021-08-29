@@ -1,11 +1,11 @@
-import { TableRow, TableCell } from "@material-ui/core";
+import { TableCell, TableRow } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import { Button } from "components/Layout";
 import { IExpense } from "models";
 import React from "react";
 import { DateUtils } from "utils/date-utils";
 import { NumberUtils } from "utils/number-utils";
 import CloseIcon from "@material-ui/icons/Close";
+import Button from "components/Layout/Button";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -14,6 +14,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 16,
+    // alignItems: "center",
   },
 }))(TableCell);
 
@@ -27,7 +28,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 type ItemProps = {
   expense: IExpense;
-  onDelete: (id: string) => void;
+  onDelete: (id?: string) => void;
 };
 
 const ExpenseItem: React.FC<ItemProps> = (props) => {
@@ -40,8 +41,14 @@ const ExpenseItem: React.FC<ItemProps> = (props) => {
       <StyledTableCell align="right">
         {NumberUtils.numberWithCommas(props.expense.amount)}
       </StyledTableCell>
-      <StyledTableCell align="right">
-        <CloseIcon onClick={() => props.onDelete(props.expense.id)}/>
+      <StyledTableCell align="right" width={120}>
+        <Button
+          color="secondary"
+          icon={<CloseIcon />}
+          text="delete"
+          // width="20"
+          onClick={() => props.onDelete(props.expense.id)}
+        />
       </StyledTableCell>
     </StyledTableRow>
   );
