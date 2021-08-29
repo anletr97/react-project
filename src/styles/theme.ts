@@ -1,13 +1,10 @@
-import { createTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core";
+import { blue } from "@material-ui/core/colors";
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
-    type: "dark",
-    grey: {
-      800: "#000000", // overrides failed
-      900: "#121212", // overrides success
+    primary: {
+      main: blue[500],
     },
   },
 });
-
-export default theme;

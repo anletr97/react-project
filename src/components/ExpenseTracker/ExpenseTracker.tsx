@@ -57,7 +57,7 @@ const ExpenseTracker: React.FC = () => {
 
   return (
     <Fragment>
-      <div className="card-header">
+      <div className="card__header">
         <h1>Expense Tracker</h1>
         <Button
           text={showInput ? "Close" : "Add"}
