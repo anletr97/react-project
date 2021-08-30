@@ -22,7 +22,7 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const Button = (props: ButtonProps) => {
+const Button: React.FC<ButtonProps> = (props) => {
   const classes = useStyles();
   const _width = props.width ? props.width : "106";
   return (

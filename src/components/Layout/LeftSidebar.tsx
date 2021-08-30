@@ -1,8 +1,11 @@
 import React from "react";
+import { Link, Router, BrowserRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Typography } from "@material-ui/core";
-import SidebarItem from "./SidebarItem";
-import { Routes } from "../../routes";
+import { menuItems } from "./MenuItems";
+import * as icons from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontWeight: 500,
+    textDecoration: "none",
     [theme.breakpoints.down("sm")]: {
       marginBottom: theme.spacing(3),
       display: "none",
@@ -41,12 +45,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LeftSidebar: React.FC = () => {
+  const history = useHistory();
   const classes = useStyles();
+
+  const handleClick = (path: string) => history.push(path);
+
+  const list = menuItems.map((item) => {
+    const Icon = icons[item.icon];
+    return (
+      <div
+        className={classes.item}
+        key={item.path}
+        onClick={() => handleClick(item.path)}
+      >
+        <Icon className={classes.icon} />
+        <Typography className={classes.text}>{item.text}</Typography>
+      </div>
+    );
+  });
+
   return (
     <Container className={classes.container}>
-      {Routes.map((route) => (
-        <SidebarItem path={route.path} text={route.text} icon={route.icon} />
-      ))}
+      <div>{list}</div>
     </Container>
   );
 };
