@@ -7,8 +7,8 @@ export enum PATH {
 
 export enum MENU_ITEM {
   HOME = "Home",
-  EXPENSE = "Expense Tracker",
+  EXPENSE = "Expense",
   SLEEP = "Sleep Tracker",
   HABIT = "Habit Tracker",
-  EXPENSE_CATEGORY = "Expense Category",
+  EXPENSE_CATEGORY = "Category",
 }

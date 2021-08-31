@@ -11,7 +11,7 @@ import ExpenseInput from "./ExpenseInput";
 import ExpenseList from "./ExpenseList";
 
 const ExpenseTracker: React.FC = () => {
-  const [showInput, setShowInput] = useState(false);
+  const [open, setOpen] = useState(false);
   const [expenses, setExpenses] = useState<IExpense[]>([]);
 
   useEffect(() => {
@@ -56,25 +56,14 @@ const ExpenseTracker: React.FC = () => {
   };
 
   return (
-    <Fragment>
-      <div className="card__header">
-        <h1>Expense Tracker</h1>
-        <Button
-          text={showInput ? "Close" : "Add"}
-          color={showInput ? "default" : "primary"}
-          icon={showInput ? <CloseIcon /> : <AddIcon />}
-          onClick={() => setShowInput(!showInput)}
-        />
-      </div>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={12}>
-          <Fragment>{showInput && <ExpenseInput onAdd={addTransaction} />}</Fragment>
-        </Grid>
-        <Grid item xs={12} md={12}>
-          <ExpenseList expenses={expenses} onDelete={deleteTransaction} />
-        </Grid>
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={12}>
+        <ExpenseInput onAdd={addTransaction} />
       </Grid>
-    </Fragment>
+      <Grid item xs={12} md={12}>
+        <ExpenseList expenses={expenses} onDelete={deleteTransaction} />
+      </Grid>
+    </Grid>
   );
 };
 

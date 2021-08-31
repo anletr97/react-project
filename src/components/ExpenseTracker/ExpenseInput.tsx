@@ -1,38 +1,46 @@
+import DateFnsUtils from "@date-io/date-fns";
 import {
-  Button,
-  Card,
+  Button as Btn,
+  Container,
   FormControl,
-  Grid,
-  Input,
   InputAdornment,
-  InputLabel,
+  Modal,
   TextField,
+  Typography,
+  Grid,
 } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
-import DateFnsUtils from "@date-io/date-fns";
-import React, { useState, FocusEventHandler } from "react";
+import AddIcon from "@material-ui/icons/Add";
+import React, { Fragment, FocusEventHandler, useState } from "react";
+import Button from "components/Layout/Button";
 import { DateUtils } from "utils/date-utils";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    cardContainer: {
-      display: "flex",
-      padding: 20,
-      // height: 350,
-      marginBottom: 20,
+    container: {
+      width: 500,
+      height: 410,
+      backgroundColor: "white",
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      margin: "auto",
+      [theme.breakpoints.down("sm")]: {
+        width: "100vw",
+        height: "100vh",
+      },
     },
     form: {
-      width: "100%",
-      paddingRight: 10,
+      padding: theme.spacing(2),
     },
-    formControl: {
-      minWidth: 120,
-      marginBottom: 20,
+    item: {
+      marginBottom: theme.spacing(2),
       width: "100%",
     },
-    input__number: {},
   })
 );
 
@@ -42,6 +50,7 @@ type InputProps = {
 
 const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
   const classes = useStyles();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [date, setDate] = useState<string>(DateUtils.getCurrentDateStr());
   const [amount, setAmount] = useState<number>(0);
   const [name, setName] = useState<string>("");
@@ -52,6 +61,8 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
     onAdd(name, amount, date);
     setName("");
     setAmount(0);
+    // Close modal
+    setIsOpen(!isOpen);
   };
 
   const handleNameChange: TChangeEvent = (e) => {
@@ -73,13 +84,26 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
   };
 
   return (
-    <Card className={classes.cardContainer}>
-      <form className={classes.form} onSubmit={onSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12}>
-            <FormControl className={classes.formControl} required={true} size="small">
+    <Fragment>
+      <div className="card__header">
+        <h1>Expense Tracker</h1>
+        <Button
+          text="Add"
+          color="primary"
+          icon={<AddIcon />}
+          onClick={() => setIsOpen(true)}
+        />
+      </div>
+      <Modal open={isOpen}>
+        <Container className={classes.container}>
+          <Typography variant="h6" align="center" style={{ paddingTop: "10px" }}>
+            Add Transaction
+          </Typography>
+          <form className={classes.form} autoComplete="off" onSubmit={onSubmit}>
+            <FormControl className={classes.item}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
+                  inputVariant="outlined"
                   disableToolbar
                   variant="inline"
                   format="yyyy/MM/dd"
@@ -87,6 +111,7 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
                   id="expense-date"
                   label="Expense Date"
                   value={date}
+                  size="medium"
                   onChange={handleDateChange}
                   KeyboardButtonProps={{
                     "aria-label": "change date",
@@ -94,45 +119,53 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
                 />
               </MuiPickersUtilsProvider>
             </FormControl>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <FormControl className={classes.formControl} required={true} size="small">
+            <FormControl className={classes.item}>
+              <TextField
+                label="Amount"
+                id="outlined-start-adornment"
+                variant="outlined"
+                size="medium"
+                onChange={handleAmountChange}
+                value={amount}
+                InputProps={{
+                  endAdornment: <InputAdornment position="start">VND</InputAdornment>,
+                }}
+              />
+            </FormControl>
+            <FormControl className={classes.item} variant="outlined">
               <TextField
                 label="Category"
                 required={true}
                 value={name}
+                size="medium"
+                variant="outlined"
                 onChange={handleNameChange}
               />
             </FormControl>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <FormControl className={classes.formControl} required={true}>
-              <InputLabel htmlFor="amount">Amount</InputLabel>
-              <Input
-                required={true}
-                id="amount"
-                value={amount}
-                //   onChange={handleChange("amount")}
-                onChange={handleAmountChange}
-                endAdornment={<InputAdornment position="start">VND</InputAdornment>}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <Button
-              className={classes.formControl}
+            <Btn
+              className={classes.item}
               type="submit"
               variant="contained"
               color="primary"
               size="large"
+              style={{ width: "100%" }}
             >
-              Add
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
-    </Card>
+              Add Transaction
+            </Btn>
+            <Btn
+              className={classes.item}
+              variant="text"
+              color="default"
+              size="large"
+              style={{ width: "100%" }}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              Cancel
+            </Btn>
+          </form>
+        </Container>
+      </Modal>
+    </Fragment>
   );
 };
 

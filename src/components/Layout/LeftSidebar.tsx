@@ -1,11 +1,9 @@
-import React from "react";
-import { Link, Router, BrowserRouter } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-
-import { makeStyles } from "@material-ui/core/styles";
 import { Container, Typography } from "@material-ui/core";
-import { menuItems } from "./MenuItems";
+import { makeStyles } from "@material-ui/core/styles";
 import * as icons from "@material-ui/icons";
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { menuItems } from "./MenuItems";
 
 const useStyles = makeStyles((theme) => ({
   container: {

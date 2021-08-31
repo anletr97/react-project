@@ -9,10 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
   },
   container: {
-    left: "20px",
-    marginTop: "50px",
-    paddingTop: "20px",
-    maxWidth: "917px",
+    marginTop: "20px",
   },
 }));
 
