@@ -38,27 +38,11 @@
     },
     {
       "name": "Test",
-      "amount": 25000,
-      "date": 1630342800000,
-      "created_at": 1630342800000,
-      "updated_at": 1630342800000,
-      "id": "rJEHktl"
-    },
-    {
-      "name": "Test",
       "amount": 250000,
       "date": 1630342800000,
       "created_at": 1630342800000,
       "updated_at": 1630342800000,
       "id": "LPn33qZ"
-    },
-    {
-      "name": "Test Create Transaction",
-      "amount": 0,
-      "date": 1630342800000,
-      "created_at": 1630342800000,
-      "updated_at": 1630342800000,
-      "id": "hpIz5DS"
     }
   ]
 }
