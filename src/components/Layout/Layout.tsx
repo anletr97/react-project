@@ -1,19 +1,18 @@
-import { Grid } from "@material-ui/core";
-import { makeStyles, Theme } from "@material-ui/core/styles";
-import React, { Fragment } from "react";
-import Header from "./Header";
-import Main from "./Main";
-import NavBar from "./NavBar";
-import LeftSidebar from "./LeftSidebar";
-import RightSidebar from "./RightSidebar";
+import { Grid } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import React, { Fragment } from 'react';
+import Main from './Main';
+import NavBar from './NavBar';
+import LeftSidebar from './LeftSidebar';
+import RightSidebar from './RightSidebar';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     // display: "flex",
   },
   right: {
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
     },
   },
 }));
