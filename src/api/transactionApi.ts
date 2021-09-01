@@ -1,9 +1,9 @@
-import { IExpense } from "../models";
-import axiosClient from "./axiosClient";
+import { IExpense } from '../models';
+import axiosClient from './axiosClient';
 
-export const URL = "/expenses";
+export const URL = '/transactions';
 
-const expenseApi = {
+const transactionApi = {
   // Fetch all task
   fetch(): Promise<IExpense[]> {
     return axiosClient.get(URL);
@@ -29,4 +29,4 @@ const expenseApi = {
     return axiosClient.post(`${URL}`, body);
   },
 };
-export default expenseApi;
+export default transactionApi;

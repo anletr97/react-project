@@ -1,21 +1,24 @@
 {
-  "expenses": [
+  "transactions": [
     {
       "id": "3",
       "name": "Shopping",
       "amount": 30000,
+      "type": "expense",
       "date": 1629969362000
     },
     {
       "id": "4",
       "name": "Meal",
       "amount": 30000,
+      "type": "expense",
       "date": 1629969362000
     },
     {
       "name": "Internet",
       "amount": 70000,
       "date": 1630083600000,
+      "type": "expense",
       "created_at": 1630083600000,
       "updated_at": 1630083600000,
       "id": "peh6ppe"
@@ -24,14 +27,16 @@
       "name": "Meal",
       "amount": 30000,
       "date": 1630083600000,
+      "type": "expense",
       "created_at": 1630083600000,
       "updated_at": 1630083600000,
       "id": "flOQTbY"
     },
     {
-      "name": "Shopee",
+      "name": "Salary",
       "amount": 125000,
       "date": 1630170000000,
+      "type": "income",
       "created_at": 1630170000000,
       "updated_at": 1630170000000,
       "id": "geIEqSX"
@@ -40,6 +45,7 @@
       "name": "Test",
       "amount": 250000,
       "date": 1630342800000,
+      "type": "expense",
       "created_at": 1630342800000,
       "updated_at": 1630342800000,
       "id": "LPn33qZ"
