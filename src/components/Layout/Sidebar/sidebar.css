@@ -1,0 +1,36 @@
+.sidebar__wrapper {
+  padding: 1.25rem;
+  color: #555;
+}
+
+.sidebar__menu {
+  margin-bottom: 0.625rem;
+}
+
+.sidebar__title {
+  font-style: 0.8125rem;
+  color: rgb(187, 186, 186);
+}
+
+.sidebar__list {
+  list-style: none;
+  padding: 0.3125rem;
+}
+
+.sidebar__item {
+  padding: 0.3125rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.sidebar__item.active,
+.sidebar__item:hover {
+  background-color: rgb(228, 228, 250);
+}
+
+.siderbar__item-icon {
+  margin-right: 0.3125rem;
+  font-style: 1.25rem !important;
+}

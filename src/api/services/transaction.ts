@@ -1,5 +1,5 @@
-import { IExpense } from '../models';
-import axiosClient from './axiosClient';
+import { IExpense } from '../../models';
+import axiosClient from '../axiosClient';
 
 export const URL = '/transactions';
 

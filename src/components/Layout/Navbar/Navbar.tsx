@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const NavBar = () => {
+const Navbar = () => {
   const classes = useStyles();
   return (
     <AppBar position="static">
@@ -36,4 +36,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

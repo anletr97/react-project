@@ -1,7 +1,6 @@
-import { PATH, MENU_ITEM } from '../../constants';
-import { ExpenseCategory, ExpenseTracker } from 'components';
+import { PATH, MENU_ITEM } from 'utils/constants';
+import { ExpenseTracker } from 'pages/ExpenseTracker';
 import { AccountBalance, ListAlt } from '@material-ui/icons';
-import TransactionItem from 'components/ExpenseTracker/TransactionItem';
 
 const icons = { AccountBalance, ListAlt };
 
@@ -19,12 +18,12 @@ export const menuItems: MenuItem[] = [
     icon: 'AccountBalance',
     component: ExpenseTracker,
   },
-  {
-    path: PATH.EXPENSE_CATEGORY,
-    text: MENU_ITEM.EXPENSE_CATEGORY,
-    icon: 'ListAlt',
-    component: ExpenseCategory,
-  },
+  // {
+  //   path: PATH.EXPENSE_CATEGORY,
+  //   text: MENU_ITEM.EXPENSE_CATEGORY,
+  //   icon: 'ListAlt',
+  //   component: ExpenseCategory,
+  // },
   // {
   //   path: '/transaction-item',
   //   text: 'ite,',

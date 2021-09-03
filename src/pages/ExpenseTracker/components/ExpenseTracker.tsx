@@ -1,12 +1,29 @@
-import { Grid } from '@material-ui/core';
-import transactionApi from 'api/transactionApi';
+import {
+  Grid,
+  Tabs,
+  Tab,
+  AppBar,
+  createStyles,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
+import transactionApi from 'api/services/transaction';
 import { ITransaction } from 'models';
 import React, { Fragment, useEffect, useState } from 'react';
 import { DataUtils } from 'utils';
 
 import TransactionList from './TransactionList';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    appBar: {
+      margin: '0 auto',
+    },
+  }),
+);
+
 const ExpenseTracker: React.FC = () => {
+  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [transactions, setTransaction] = useState<ITransaction[]>([]);
 
@@ -53,8 +70,13 @@ const ExpenseTracker: React.FC = () => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={12}>
-        {/* <ExpenseInput onAdd={addTransaction} /> */}
+      <Grid item xs={12} md={12} className={classes.appBar}>
+        <AppBar position="static">
+          <Tabs aria-label="simple tabs example" variant="fullWidth">
+            <Tab label="Daily"></Tab>
+            <Tab label="This month"></Tab>
+          </Tabs>
+        </AppBar>
       </Grid>
       <Grid item xs={12} md={12}>
         <TransactionList transactions={transactions} onDelete={deleteTransaction} />

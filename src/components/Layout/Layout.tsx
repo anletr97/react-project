@@ -2,9 +2,8 @@ import { Grid } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import React, { Fragment } from 'react';
 import Main from './Main';
-import NavBar from './NavBar';
-import LeftSidebar from './LeftSidebar';
-import RightSidebar from './RightSidebar';
+import { Navbar } from './Navbar';
+import { Sidebar } from './Sidebar';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -32,16 +31,13 @@ const Layout = () => {
 
   return (
     <div className={classes.root}>
-      <NavBar />
+      <Navbar />
       <Grid container>
         <Grid item sm={2} xs={2}>
-          <LeftSidebar />
+          <Sidebar />
         </Grid>
         <Grid item sm={7} xs={10}>
           <Main />
-        </Grid>
-        <Grid item sm={3} className={classes.right}>
-          <RightSidebar />
         </Grid>
       </Grid>
     </div>

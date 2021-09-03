@@ -1,6 +1,7 @@
 import './Transaction.css';
 
 import { ITransaction } from 'models';
+import { NumberUtils } from 'utils/number-utils';
 import React, { Fragment } from 'react';
 
 type ItemProps = {
@@ -17,7 +18,8 @@ const TransactionItem: React.FC<ItemProps> = ({ transaction, onDelete }) => {
 
   return (
     <li className={`transaction__container ${classes}`}>
-      {transaction.name} <span>{transaction.amount} VND</span>
+      {transaction.name}{' '}
+      <span>{NumberUtils.numberWithCommas(transaction.amount)} VND</span>
       <button className={`transaction__action`}>x</button>
     </li>
   );
