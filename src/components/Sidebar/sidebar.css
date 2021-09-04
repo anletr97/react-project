@@ -21,10 +21,12 @@
 
 .sidebar__item {
   padding: 0.3125rem;
+  margin-bottom: 0.125rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: 10px;
+  width: 100%;
 }
 
 .sidebar__item.active,

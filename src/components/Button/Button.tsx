@@ -1,22 +1,22 @@
+import './button.css';
+
 import { Button as Btn, PropTypes } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React from 'react';
-import * as icons from '@material-ui/icons';
-import './button.css';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       minWidth: 55,
-      height: 55,
       alignItems: 'center',
+      width: '100%',
     },
   }),
 );
 
 interface ButtonProps {
   label?: string;
-  color?: PropTypes.Color;
+  color?: string;
   icon?: React.ReactNode;
   width?: string;
   onClick: () => void;
@@ -24,20 +24,15 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = (props) => {
   const classes = useStyles();
-  const _width = props.width ? props.width + 'px' : '106px';
   return (
-    // <div className="btn__wrapper">
-    //   {props.label}
-    //   <Icon className="btn__icon" />
-    // </div>
-
     <Btn
       className={classes.root}
       variant="contained"
-      style={{ width: `${_width}` }}
-      color={props.color}
+      style={{ backgroundColor: props.color ? props.color : '' }}
+      size="large"
       startIcon={props.icon}
-      onClick={props.onClick}>
+      onClick={props.onClick}
+    >
       {props.label}
     </Btn>
   );

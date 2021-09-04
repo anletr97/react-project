@@ -1,0 +1,12 @@
+.list__wrapper {
+  margin-top: 1.25rem;
+}
+
+.list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list__content {
+}

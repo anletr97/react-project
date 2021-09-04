@@ -49,6 +49,24 @@
       "created_at": 1630342800000,
       "updated_at": 1630342800000,
       "id": "LPn33qZ"
+    },
+    {
+      "name": "Covid Test Kit",
+      "amount": 580000,
+      "type": "expense",
+      "date": 1630688400000,
+      "created_at": 1630688400000,
+      "updated_at": 1630688400000,
+      "id": "lYWA_m5"
+    },
+    {
+      "name": "Bonus covid",
+      "amount": 500000,
+      "type": "income",
+      "date": 1630688400000,
+      "created_at": 1630688400000,
+      "updated_at": 1630688400000,
+      "id": "k69h18d"
     }
   ]
 }
