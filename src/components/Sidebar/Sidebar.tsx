@@ -1,6 +1,6 @@
-import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import * as icons from '@material-ui/icons';
+import ListAltIcon from '@material-ui/icons/ListAlt';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { menuItems } from '../MenuItems';
@@ -74,7 +74,24 @@ const LeftSidebar: React.FC = () => {
       <div className="sidebar__wrapper">
         <div className="sidebar__menu">
           <div className="sidebar__title">Dashboard</div>
-          <ul className="sidebar__list">{menuList}</ul>
+          <ul className="sidebar__list">
+            <li className="sidebar__item">
+              <ListAltIcon className="sidebar__item-icon" />
+              Item
+            </li>
+            <li className="sidebar__item active">
+              <ListAltIcon className="sidebar__item-icon" />
+              Item
+            </li>
+            <li className="sidebar__item">
+              <ListAltIcon className="sidebar__item-icon" />
+              Item
+            </li>
+            <li className="sidebar__item">
+              <ListAltIcon className="sidebar__item-icon" />
+              Item
+            </li>
+          </ul>
         </div>
       </div>
     </div>

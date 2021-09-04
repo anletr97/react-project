@@ -1,18 +1,9 @@
-import {
-  Grid,
-  Tabs,
-  Tab,
-  AppBar,
-  createStyles,
-  makeStyles,
-  Theme,
-} from '@material-ui/core';
+import { createStyles, Grid, makeStyles, Theme } from '@material-ui/core';
 import transactionApi from 'api/services/transaction';
 import { ITransaction } from 'models';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataUtils } from 'utils';
-
-import TransactionList from './TransactionList';
+import { TransactionSumary, TransactionList, TransactionInput } from './components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,15 +61,13 @@ const ExpenseTracker: React.FC = () => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={12} className={classes.appBar}>
-        <AppBar position="static">
-          <Tabs aria-label="simple tabs example" variant="fullWidth">
-            <Tab label="Daily"></Tab>
-            <Tab label="This month"></Tab>
-          </Tabs>
-        </AppBar>
+      <Grid item sm={8} xs={12} className={classes.appBar}>
+        <TransactionSumary />
+        <TransactionInput />
+        {/* <TransactionList transactions={transactions} onDelete={deleteTransaction} /> */}
       </Grid>
-      <Grid item xs={12} md={12}>
+      <Grid item sm={4} xs={12}>
+        Shedule payment list goes here
         <TransactionList transactions={transactions} onDelete={deleteTransaction} />
       </Grid>
     </Grid>

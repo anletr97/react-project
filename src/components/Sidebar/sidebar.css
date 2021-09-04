@@ -1,6 +1,8 @@
 .sidebar__wrapper {
   padding: 1.25rem;
   color: #555;
+  background-color: #fcfcfc;
+  height: 100vh;
 }
 
 .sidebar__menu {

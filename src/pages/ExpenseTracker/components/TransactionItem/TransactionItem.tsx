@@ -1,8 +1,7 @@
-import './Transaction.css';
-
 import { ITransaction } from 'models';
+import React from 'react';
 import { NumberUtils } from 'utils/number-utils';
-import React, { Fragment } from 'react';
+import './transactionItem.css';
 
 type ItemProps = {
   transaction: ITransaction;

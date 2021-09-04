@@ -14,7 +14,7 @@ import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/picker
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 import AddIcon from '@material-ui/icons/Add';
 import React, { Fragment, FocusEventHandler, useState } from 'react';
-import Button from 'components/Layout/Button';
+import { Button } from 'components/Button';
 import { DateUtils } from 'utils/date-utils';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -92,9 +92,9 @@ const ExpenseInput: React.FC<InputProps> = ({ onAdd }) => {
       <div className="card__header">
         <h1>Expense Tracker</h1>
         <Button
-          text="Add"
+          label="Add"
           color="primary"
-          icon={<AddIcon />}
+          icon="Add"
           onClick={() => setIsOpen(true)}
         />
       </div>
