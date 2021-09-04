@@ -1,25 +1,25 @@
+import './test.css';
+
 import DateFnsUtils from '@date-io/date-fns';
 import {
+  Button as Btn,
   Container,
   createStyles,
   FormControl,
   InputAdornment,
+  InputLabel,
   makeStyles,
   Modal,
+  Select,
   TextField,
   Theme,
   Typography,
-  Button as Btn,
-  InputLabel,
-  Select,
-  MenuItem,
 } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-import React, { FocusEventHandler, useState } from 'react';
 import { Button, ButtonIcon } from 'components';
+import React, { useState } from 'react';
 import { DateUtils } from 'utils';
-import './test.css';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

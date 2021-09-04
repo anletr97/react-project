@@ -1,6 +1,4 @@
-import './button.css';
-
-import { Button as Btn, PropTypes } from '@material-ui/core';
+import { Button as Btn } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React from 'react';
 

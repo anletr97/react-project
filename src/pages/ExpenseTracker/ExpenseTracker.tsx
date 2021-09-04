@@ -3,7 +3,8 @@ import transactionApi from 'api/services/transaction';
 import { ITransaction } from 'models';
 import React, { useEffect, useState } from 'react';
 import { DataUtils, DateUtils } from 'utils';
-import { TransactionSumary, TransactionList, TransactionInput } from './components';
+
+import { TransactionList, TransactionSumary } from './components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const ExpenseTracker: React.FC = () => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
   const [transactions, setTransaction] = useState<ITransaction[]>([]);
 
   useEffect(() => {
