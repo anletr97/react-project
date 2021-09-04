@@ -19,7 +19,12 @@ const TransactionItem: React.FC<ItemProps> = ({ transaction, onDelete }) => {
     <li className={`transaction__container ${classes}`}>
       {transaction.name}{' '}
       <span>{NumberUtils.numberWithCommas(transaction.amount)} VND</span>
-      <button className={`transaction__action`}>x</button>
+      <button
+        className={`transaction__action`}
+        onClick={() => onDelete(transaction.id)}
+      >
+        x
+      </button>
     </li>
   );
 };

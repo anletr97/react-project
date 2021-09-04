@@ -16,17 +16,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Layout = () => {
   const classes = useStyles();
-  // toggle state
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const handleDrawerDesktop = () => {
-    if (mobileOpen) setMobileOpen(false);
-  };
-
   return (
     <div className={classes.root}>
       <Navbar />

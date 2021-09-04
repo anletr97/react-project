@@ -1,20 +1,6 @@
 {
   "transactions": [
     {
-      "id": "3",
-      "name": "Shopping",
-      "amount": 30000,
-      "type": "expense",
-      "date": 1629969362000
-    },
-    {
-      "id": "4",
-      "name": "Meal",
-      "amount": 30000,
-      "type": "expense",
-      "date": 1629969362000
-    },
-    {
       "name": "Internet",
       "amount": 70000,
       "date": 1630083600000,

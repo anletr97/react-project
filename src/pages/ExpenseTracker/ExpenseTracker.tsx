@@ -37,6 +37,13 @@ const ExpenseTracker: React.FC = () => {
     return arr;
   };
 
+  /**
+   *
+   * @param name
+   * @param type
+   * @param amount
+   * @param date
+   */
   const addTransaction: TransactionAddForm = async (name, type, amount, date) => {
     // const expense: IExpense =;
     const transaction = {
@@ -48,10 +55,6 @@ const ExpenseTracker: React.FC = () => {
       updated_at: DateUtils.strToTimeStamp(DateUtils.getCurrentDateStr()),
     };
 
-    console.log(
-      '🚀 ~ file: ExpenseTracker.tsx ~ line 51 ~ constaddTransaction:TransactionAddForm= ~ transaction',
-      transaction,
-    );
     await transactionApi.add(transaction).then((res) => {
       setTransaction([res, ...transactions]);
     });

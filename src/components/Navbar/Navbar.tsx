@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import React, { useState } from 'react';
+import React from 'react';
 
 // Styling
 const useStyles = makeStyles((theme) =>
