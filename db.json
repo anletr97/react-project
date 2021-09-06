@@ -1,58 +1,40 @@
 {
   "transactions": [
     {
-      "name": "Internet",
-      "amount": 70000,
-      "date": 1630083600000,
+      "name": "123123",
+      "amount": 123,
       "type": "expense",
-      "created_at": 1630083600000,
-      "updated_at": 1630083600000,
-      "id": "peh6ppe"
+      "date": 1630774800000,
+      "created_at": 1630774800000,
+      "updated_at": 1630774800000,
+      "id": 7
     },
     {
-      "name": "Meal",
-      "amount": 30000,
-      "date": 1630083600000,
+      "name": "2",
+      "amount": 0,
       "type": "expense",
-      "created_at": 1630083600000,
-      "updated_at": 1630083600000,
-      "id": "flOQTbY"
+      "date": 1630774800000,
+      "created_at": 1630774800000,
+      "updated_at": 1630774800000,
+      "id": 8
     },
     {
-      "name": "Salary",
-      "amount": 125000,
-      "date": 1630170000000,
-      "type": "income",
-      "created_at": 1630170000000,
-      "updated_at": 1630170000000,
-      "id": "geIEqSX"
-    },
-    {
-      "name": "Test",
-      "amount": 250000,
-      "date": 1630342800000,
+      "name": "2",
+      "amount": 0,
       "type": "expense",
-      "created_at": 1630342800000,
-      "updated_at": 1630342800000,
-      "id": "LPn33qZ"
+      "date": 1630774800000,
+      "created_at": 1630774800000,
+      "updated_at": 1630774800000,
+      "id": 9
     },
     {
-      "name": "Covid Test Kit",
-      "amount": 580000,
+      "name": "123",
+      "amount": 0,
       "type": "expense",
-      "date": 1630688400000,
-      "created_at": 1630688400000,
-      "updated_at": 1630688400000,
-      "id": "lYWA_m5"
-    },
-    {
-      "name": "Bonus covid",
-      "amount": 500000,
-      "type": "income",
-      "date": 1630688400000,
-      "created_at": 1630688400000,
-      "updated_at": 1630688400000,
-      "id": "k69h18d"
+      "date": 1630774800000,
+      "created_at": 1630774800000,
+      "updated_at": 1630774800000,
+      "id": 10
     }
   ]
 }

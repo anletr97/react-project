@@ -3,8 +3,10 @@ import transactionApi from 'api/services/transaction';
 import { ITransaction } from 'models';
 import React, { useEffect, useState } from 'react';
 import { DataUtils, DateUtils } from 'utils';
-
+import { Toast } from 'components';
 import { TransactionList, TransactionSumary } from './components';
+import { MESSAGE } from 'utils/constants';
+import { useToast } from 'utils/hooks';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,7 +18,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const ExpenseTracker: React.FC = () => {
   const classes = useStyles();
+  const { messageObj, toastSuccess, toastError } = useToast();
   const [transactions, setTransaction] = useState<ITransaction[]>([]);
+  const [openAlert, setOpenAlert] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,7 +60,12 @@ const ExpenseTracker: React.FC = () => {
     };
 
     await transactionApi.add(transaction).then((res) => {
-      setTransaction([res, ...transactions]);
+      if (res) {
+        setTransaction([res, ...transactions]);
+        toastSuccess(MESSAGE.ADD_SUCCESS);
+      } else {
+        toastError(MESSAGE.ADD_ERROR);
+      }
     });
 
     // re-render
@@ -75,6 +84,12 @@ const ExpenseTracker: React.FC = () => {
           transactions={transactions}
           onDelete={deleteTransaction}
           onAdd={addTransaction}
+        />
+        <Toast
+          message_type={messageObj.message_type}
+          title={messageObj.title}
+          message={messageObj.message}
+          open={messageObj.open}
         />
       </Grid>
       <Grid item sm={4} xs={12}>

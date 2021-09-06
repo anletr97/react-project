@@ -18,5 +18,9 @@
     "baseUrl": "src"
   },
   "include": ["src"],
-  "typings": ["./dist/types/types.d.ts", "./dist/types/form.types.d.ts"]
+  "typings": [
+    "./dist/types/types.d.ts",
+    "./dist/types/form.types.d.ts",
+    "./dist/types/design.types.d.ts"
+  ]
 }
