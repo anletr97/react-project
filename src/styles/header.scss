@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import "color";
+html {
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    font-size: 1.5rem;
+    color: $text-gray;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.row {
+    --bs-gutter-x: 2.5rem;
+}
+
+.logo-website {
+    width: 56px;
+}
+
+#navbarCollapse {
+    margin-left: 2rem;
+    .nav-item {
+        color: $text-gray;
+        font-size: 1.8rem;
+        font-weight: 600;
+        padding: 0.5rem 2rem;
+        &.active,
+        &:hover,
+        &:focus,
+        &:active {
+            color: $pink-color;
+        }
+    }
+}
+
+.bg-pink-light {
+    background: #fceff4;
+}
+
+.text-pink {
+    color: $pink-color;
+}
+
+.lead {
+    font-size: 1.5rem;
+}
+
+.pt-6 {
+    padding-top: 6rem;
+}
+
+.pb-6 {
+    padding-bottom: 6rem;
+}
+
+.mr-2 {
+    margin-right: 2rem;
+}
+
+.btn-pink {
+    padding: 0.7rem 2.2rem;
+    font-size: 1.4rem;
+    color: $white-color;
+    background-color: $pink-bg-button-color;
+    border-color: $pink-border-color;
+    &:hover,
+    &:focus,
+    &:active {
+        background: $white-color;
+        color: $pink-bg-button-color;
+        border-color: $pink-border-color;
+        box-shadow: none;
+    }
+}
+
+.btn-light {
+    padding: 0.7rem 2.2rem;
+    font-size: 1.4rem;
+    color: #212121;
+    background-color: transparent;
+    border-color: rgba(33, 33, 33, .45);
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: rgba(33, 33, 33, .08);
+        border-color: rgba(33, 33, 33, .55);
+        color: #212121;
+        box-shadow: none;
+    }
+}
+
+.btn-blue {
+    background-color: rgba(0, 102, 204, .08);
+    border-color: rgba(0, 102, 204, .55);
+    color: #06c;
+    border-radius: 50rem;
+    padding: 0.7rem 2.2rem;
+    font-size: 1.4rem;
+    max-width: 12rem;
+    &:hover,
+    &:focus,
+    &:active {
+        color: #fff;
+        background-color: #06c;
+        border-color: #06c;
+    }
+}

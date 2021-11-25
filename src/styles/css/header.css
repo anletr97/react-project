@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+html {
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  font-size: 1.5rem;
+  color: #616161;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.row {
+  --bs-gutter-x: 2.5rem;
+}
+
+.logo-website {
+  width: 56px;
+}
+
+#navbarCollapse {
+  margin-left: 2rem;
+}
+
+#navbarCollapse .nav-item {
+  color: #616161;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+}
+
+#navbarCollapse .nav-item.active, #navbarCollapse .nav-item:hover, #navbarCollapse .nav-item:focus, #navbarCollapse .nav-item:active {
+  color: #a50064;
+}
+
+.bg-pink-light {
+  background: #fceff4;
+}
+
+.text-pink {
+  color: #a50064;
+}
+
+.lead {
+  font-size: 1.5rem;
+}
+
+.pt-6 {
+  padding-top: 6rem;
+}
+
+.pb-6 {
+  padding-bottom: 6rem;
+}
+
+.mr-2 {
+  margin-right: 2rem;
+}
+
+.btn-pink {
+  padding: 0.7rem 2.2rem;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: #c0145e;
+  border-color: #b51359;
+}
+
+.btn-pink:hover, .btn-pink:focus, .btn-pink:active {
+  background: #fff;
+  color: #c0145e;
+  border-color: #b51359;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-light {
+  padding: 0.7rem 2.2rem;
+  font-size: 1.4rem;
+  color: #212121;
+  background-color: transparent;
+  border-color: rgba(33, 33, 33, 0.45);
+}
+
+.btn-light:hover, .btn-light:focus, .btn-light:active {
+  background-color: rgba(33, 33, 33, 0.08);
+  border-color: rgba(33, 33, 33, 0.55);
+  color: #212121;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-blue {
+  background-color: rgba(0, 102, 204, 0.08);
+  border-color: rgba(0, 102, 204, 0.55);
+  color: #06c;
+  border-radius: 50rem;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.4rem;
+  max-width: 12rem;
+}
+
+.btn-blue:hover, .btn-blue:focus, .btn-blue:active {
+  color: #fff;
+  background-color: #06c;
+  border-color: #06c;
+}
+/*# sourceMappingURL=header.css.map */

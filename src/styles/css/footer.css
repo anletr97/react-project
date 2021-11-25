@@ -1,0 +1,86 @@
+.footer {
+  background: #303030;
+  padding: 2rem 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.modal-dialog {
+  max-width: 60%;
+}
+
+.modal-dialog .modal-content {
+  border-radius: 1.5rem;
+}
+
+.modal-dialog .modal-body {
+  padding: 0;
+}
+
+.modal-dialog .btn-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.modal-dialog .btn-close:hover, .modal-dialog .btn-close:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.modal-dialog .gradient-form {
+  border-radius: 1.5rem;
+  background-color: #eee;
+}
+
+.modal-dialog .gradient-form .container {
+  padding: 3rem;
+}
+
+.modal-dialog .card {
+  border-radius: 1rem;
+}
+
+.modal-dialog .gradient-custom-2 {
+  background: #fccb90;
+  background: -webkit-gradient(linear, left top, right top, from(#ee7724), color-stop(#d8363a), color-stop(#dd3675), to(#b44593));
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.modal-dialog .btn-outline-danger {
+  color: #f93154;
+  border-color: #f93154;
+  font-size: 1.5rem;
+  padding: 0.7rem 1.5rem;
+}
+
+.modal-dialog .btn-outline-danger:hover {
+  color: #fff;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.modal-dialog .btn-outline-danger:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.modal-dialog form p {
+  color: 303030;
+  font-weight: 600;
+}
+
+.modal-dialog form .form-control {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.4rem;
+}
+
+.modal-dialog form .btn-login {
+  width: 100%;
+  font-size: 1.7rem;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0;
+}
+/*# sourceMappingURL=footer.css.map */

@@ -1,0 +1,113 @@
+@import "color";
+.banner-home {
+    padding: 0;
+    img {
+        width: 100%;
+    }
+}
+
+.solieu-list {
+    display: flex;
+    flex-flow: row wrap;
+    text-align: left;
+    .solieu-item {
+        max-width: 18rem;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+        &::after {
+            content: "";
+            height: 1.8rem;
+            width: 0.2rem;
+            background-color: #f45197;
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+        }
+    }
+    .solieu-item-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .solieu-item-subtitle {
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        color: $text-gray;
+    }
+}
+
+.article__hori {
+    &:hover {
+        .info__title a {
+            color: #a50064;
+        }
+    }
+    .article__figure {
+        position: relative;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        .embed-responsive {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            height: 14rem;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .info__title {
+        a {
+            color: #212121;
+            font-size: 1.5rem;
+        }
+    }
+    .info__meta {
+        font-size: 13px;
+        color: #757575;
+    }
+}
+
+.reason__item {
+    position: relative;
+    padding: 0 0.5rem;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3rem;
+    .reason__item__avatar {
+        position: absolute;
+        margin-bottom: 0;
+        width: 6.5rem;
+        height: 6.5rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border-radius: 50%;
+    }
+    .reason__item__content {
+        margin-bottom: 0;
+        text-align: left;
+        width: 100%;
+        margin-left: 0;
+        padding-left: 8.5rem;
+        padding-right: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        line-height: 2.1rem;
+    }
+}
+
+.reason__cta {
+    position: absolute;
+    text-align: center;
+    bottom: 2rem;
+    width: 100%;
+    left: 0;
+}

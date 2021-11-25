@@ -1,0 +1,90 @@
+.donation-list .campaign-dn {
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 7px 25px 0 rgba(0, 0, 0, 0.03), 0 4px 12px 0 rgba(0, 0, 0, 0.03);
+  transition-property: box-shadow;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: hidden;
+  border-radius: 0.25rem;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  word-wrap: break-word;
+  height: 100%;
+  color: #616161;
+  font-size: 15px;
+  line-height: 18px;
+  width: 100%;
+  max-width: 100%;
+  width: auto;
+}
+.donation-list .campaign-dn:hover .campaign-dn-title {
+  color: #a50064;
+}
+.donation-list .campaign-dn-img {
+  height: 22rem;
+  overflow: hidden;
+}
+.donation-list .campaign-dn-title {
+  color: #212121;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.donation-list .campaign-dn-body {
+  padding: 1.6rem 2rem;
+  flex: 1;
+}
+.donation-list .campaign-dn-footer {
+  padding: 1rem 2rem 1.6rem;
+}
+.donation-list .campaign-dn-footer .campaign-dn-info {
+  display: flex;
+  padding-bottom: 0.6rem;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+}
+.donation-list .campaign-dn-footer .campaign-dn-info .campaign-dn-money {
+  flex: 1;
+  font-size: 1.4rem;
+}
+.donation-list .campaign-dn-footer .campaign-dn-info .campaign-dn-percent {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.donation-list .campaign-dn-footer .campaign-progress {
+  display: flex;
+  height: 0.7rem;
+  overflow: hidden;
+  line-height: 0;
+  font-size: 0.75rem;
+  background-color: #e9ecef;
+  border-radius: 10rem;
+}
+.donation-list .campaign-dn-footer .campaign-progress .campaign-progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #ae2070;
+  transition: width 0.6s ease;
+  border-radius: 10rem;
+}
+.donation-list .campaign-dn-footer .campaign-dn-time {
+  color: #757575;
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  justify-content: space-between;
+}
+.donation-list .campaign-dn-footer .campaign-dn-time .ico {
+  vertical-align: -14%;
+  height: 1.3rem;
+  width: 1.3rem;
+  margin-right: 0.2rem;
+}
+/*# sourceMappingURL=donation.css.map */
