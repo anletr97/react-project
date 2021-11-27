@@ -1,4 +1,4 @@
-import { Navbar, Summary, Article, Outro, Footer } from 'components';
+import { Navbar, Outro, Footer } from 'components';
 import React, { ReactNode } from 'react';
 
 export type LayoutProps = {
