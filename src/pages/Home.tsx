@@ -1,12 +1,14 @@
 import campaignApi from 'api/services/campaign';
-import { Campaign, Layout } from 'components';
-import { ICampaign } from 'models/campaign';
+import { Campaign, Layout, Summary } from 'components';
+import { defautlCampaignSummary, ICampaign, ICampaignSummary } from 'models';
 import { Utils } from 'utils';
 import React, { useEffect, useState } from 'react';
 
 const Home = () => {
   const [campaignList, setCampaignList] = useState<ICampaign[]>([]);
+  const [summary, setSummary] = useState<ICampaignSummary>(defautlCampaignSummary);
 
+  // Fetch campaign list
   useEffect(() => {
     const fetch = async () => {
       const campaignList = await fetchCampaign();
@@ -20,12 +22,28 @@ const Home = () => {
     await campaignApi.fetch().then((res) => {
       arr = Utils.deepCloneArray(res);
     });
-
     return arr;
+  };
+  // Fetch campaign summary
+  useEffect(() => {
+    const getSummary = async () => {
+      const summary = await fetchCampaignSummary();
+      setSummary(summary);
+    };
+    getSummary();
+  }, []);
+
+  const fetchCampaignSummary = async () => {
+    let retObj = { ...defautlCampaignSummary };
+    await campaignApi.getSummary().then((res) => {
+      retObj = { ...res };
+    });
+    return retObj;
   };
 
   return (
     <Layout>
+      <Summary data={summary} />
       <section className="bg-pink-light pt-6 pb-6">
         <div className="container">
           <div className="row">
@@ -36,7 +54,7 @@ const Home = () => {
               <div className="row donation-list">
                 {campaignList &&
                   campaignList.map((campaign) => (
-                    <Campaign campaign={campaign} key={campaign.id} />
+                    <Campaign data={campaign} key={campaign.id} />
                   ))}
               </div>
 

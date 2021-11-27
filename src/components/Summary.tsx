@@ -1,6 +1,12 @@
+import { ICampaignSummary } from 'models';
+import { Utils } from 'utils';
 import React from 'react';
 
-const Summary = () => {
+type SummaryProps = {
+  data: ICampaignSummary;
+};
+
+const Summary = ({ data }: SummaryProps) => {
   return (
     <section className="container pt-6 pb-6">
       <div className="row align-items-center justify-content-center">
@@ -15,11 +21,11 @@ const Summary = () => {
               <h4
                 className="solieu-item-title"
                 data-countup=""
-                data-end="95"
+                data-end={data.total_charity_campaign}
                 data-start="0"
                 data-suffix="%"
               >
-                95%
+                {Utils.addCommas(data.total_charity_campaign)}%
               </h4>
               <div className="solieu-item-subtitle">
                 dự án đã được gây quỹ thành công
@@ -29,11 +35,11 @@ const Summary = () => {
               <h4
                 className="solieu-item-title"
                 data-countup=""
-                data-end="7500"
+                data-end={data.total_people_supported}
                 data-start="1000"
                 data-suffix="+"
               >
-                7500+
+                {Utils.addCommas(data.total_people_supported)}+
               </h4>
               <div className="solieu-item-subtitle">
                 trẻ em được thay đổi cuộc sống
@@ -43,11 +49,11 @@ const Summary = () => {
               <h4
                 className="solieu-item-title"
                 data-countup=""
-                data-end="23"
+                data-end={data.total_amount}
                 data-start="0"
                 data-suffix=" tỷ +"
               >
-                23 tỷ +
+                {Utils.addCommas(data.total_amount)} tỷ +
               </h4>
 
               <div className="solieu-item-subtitle">đồng được quyên góp</div>

@@ -4,35 +4,33 @@ import { Utils } from 'utils';
 import 'styles/donation.scss';
 
 type CampaignProps = {
-  campaign: ICampaign;
+  data: ICampaign;
 };
 
-const Campaign = ({ campaign }: CampaignProps) => {
-  const daysLeft = Utils.getDaysLeft(campaign.end_date);
+const Campaign = ({ data }: CampaignProps) => {
+  const daysLeft = Utils.getDaysLeft(data.end_date);
   return (
     <div className="col-12 col-sm-6 col-lg-4 mb-5 ">
       <div className="campaign-dn">
         <div className="campaign-dn-img">
           <img
-            src={campaign.images ? campaign.images[0] : ''}
-            alt={campaign.name}
+            src={data.images ? data.images[0] : ''}
+            alt={data.name}
             className="img-fluid"
           />
         </div>
         <div className="campaign-dn-body">
-          <h5 className="campaign-dn-title">{Utils.truncate(campaign.name, 150)}</h5>
-          <p className="campaign-dn-summary">
-            {Utils.truncate(campaign.content, 200)}
-          </p>
+          <h5 className="campaign-dn-title">{Utils.truncate(data.name, 150)}</h5>
+          <p className="campaign-dn-summary">{Utils.truncate(data.content, 200)}</p>
         </div>
         <div className="campaign-dn-footer">
           <div className="campaign-dn-info">
             <div className="campaign-dn-money">
-              <b>{Utils.addCommas(campaign.current_amount_of_money)}đ</b>
+              <b>{Utils.addCommas(data.current_amount_of_money)}đ</b>
               <span> quyên góp</span>
             </div>
             <div className="campaign-dn-percent">
-              {campaign.current_percent_of_donation}%
+              {data.current_percent_of_donation}%
             </div>
           </div>
           <div className="campaign-progress">
@@ -40,8 +38,8 @@ const Campaign = ({ campaign }: CampaignProps) => {
               className="campaign-progress-bar"
               style={{
                 width: `${
-                  campaign.current_percent_of_donation
-                    ? campaign.current_percent_of_donation
+                  data.current_percent_of_donation
+                    ? data.current_percent_of_donation
                     : 0
                 }%`,
               }}
@@ -67,7 +65,7 @@ const Campaign = ({ campaign }: CampaignProps) => {
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
-              <span>{campaign.current_numbers_of_donation} lượt quyên góp</span>
+              <span>{data.current_numbers_of_donation} lượt quyên góp</span>
             </div>
 
             <div className="text-lowercase">
