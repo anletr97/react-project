@@ -1,6 +1,7 @@
 import { ICampaign } from 'models/campaign';
 import React from 'react';
 import { Utils } from 'utils';
+import 'styles/donation.scss';
 
 type CampaignProps = {
   campaign: ICampaign;
@@ -14,22 +15,20 @@ const Campaign = ({ campaign }: CampaignProps) => {
         <div className="campaign-dn-img">
           <img
             src={campaign.images ? campaign.images[0] : ''}
-            alt={campaign.description}
+            alt={campaign.name}
             className="img-fluid"
           />
         </div>
         <div className="campaign-dn-body">
-          <h5 className="campaign-dn-title">
-            {Utils.truncate(campaign.description, 150)}
-          </h5>
+          <h5 className="campaign-dn-title">{Utils.truncate(campaign.name, 150)}</h5>
           <p className="campaign-dn-summary">
-            {Utils.truncate(campaign.content, 150)}
+            {Utils.truncate(campaign.content, 200)}
           </p>
         </div>
         <div className="campaign-dn-footer">
           <div className="campaign-dn-info">
             <div className="campaign-dn-money">
-              <b>{campaign.current_amount_of_money}đ</b>
+              <b>{Utils.addCommas(campaign.current_amount_of_money)}đ</b>
               <span> quyên góp</span>
             </div>
             <div className="campaign-dn-percent">

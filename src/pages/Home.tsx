@@ -4,7 +4,6 @@ import { ICampaign } from 'models/campaign';
 import { Utils } from 'utils';
 import React, { useEffect, useState } from 'react';
 
-// TODO: DUMMY ARTICLE, WILL BE FETCHED FROM API SOON
 const Home = () => {
   const [campaignList, setCampaignList] = useState<ICampaign[]>([]);
 
@@ -21,7 +20,6 @@ const Home = () => {
     await campaignApi.fetch().then((res) => {
       arr = Utils.deepCloneArray(res);
     });
-    console.log(arr);
 
     return arr;
   };

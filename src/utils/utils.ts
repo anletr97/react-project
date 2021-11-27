@@ -4,7 +4,7 @@ export class Utils {
 
   // NUMBER
   static addCommas = (number: number) => {
-    return number ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
+    return number ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0';
   };
 
   // DATE

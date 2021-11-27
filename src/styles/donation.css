@@ -1,6 +1,7 @@
 .donation-list .campaign-dn {
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 7px 25px 0 rgba(0, 0, 0, 0.03), 0 4px 12px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 7px 25px 0 rgba(0, 0, 0, 0.03),
+    0 4px 12px 0 rgba(0, 0, 0, 0.03);
   transition-property: box-shadow;
   transition-duration: 0.4s;
   transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
