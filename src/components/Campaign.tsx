@@ -21,7 +21,7 @@ const Campaign = ({ data }: CampaignProps) => {
         </div>
         <div className="campaign-dn-body">
           <h5 className="campaign-dn-title">{Utils.truncate(data.name, 150)}</h5>
-          <p className="campaign-dn-summary">{Utils.truncate(data.content, 200)}</p>
+          <p className="campaign-dn-summary">{Utils.truncate(data.description, 200)}</p>
         </div>
         <div className="campaign-dn-footer">
           <div className="campaign-dn-info">
