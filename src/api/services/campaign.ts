@@ -1,6 +1,6 @@
 import axiosClient from 'api/axiosClient';
 import API_URL from 'common/constant';
-import { ICampaignSummary } from 'models';
+import { ICampaign, ICampaignSummary } from 'models';
 
 export const service = 'charity-campaigns';
 const campaignApi = {
@@ -10,6 +10,10 @@ const campaignApi = {
 
   getSummary(): Promise<ICampaignSummary> {
     return axiosClient.get(`${API_URL}${service}/summary`);
+  },
+
+  getCampaignById(id: number): Promise<ICampaign> {
+    return axiosClient.get(`${API_URL}${service}/${id}`);
   },
 };
 

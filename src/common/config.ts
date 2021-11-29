@@ -1,8 +1,7 @@
-import { Home, About } from 'pages';
-
 export const Path = {
   HOME: '/home',
   ABOUT: '/about',
+  DETAIL: 'charity-campaigns',
 };
 
 /**
@@ -14,23 +13,4 @@ export const NavItems = [
   // TODO: Dummy page will be replaced later
   { name: 'Tin tức', path: Path.ABOUT },
   { name: 'Liên hệ', path: Path.ABOUT },
-];
-
-export const Routes = [
-  {
-    path: Path.HOME,
-    page: Home,
-  },
-  {
-    path: Path.ABOUT,
-    page: About,
-  },
-  {
-    path: '/test02',
-    page: Home,
-  },
-  {
-    path: '/test03',
-    page: Home,
-  },
 ];

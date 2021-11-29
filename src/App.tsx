@@ -1,13 +1,15 @@
-import { Routes } from 'common';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Detail, Home } from 'pages';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
     <Router>
-      {Routes.map((r) => (
-        <Route path={r.path} key={r.path} component={r.page} />
-      ))}
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/home" component={Home} exact />
+        <Route path="/charity-campaigns/:id" component={Detail} exact />
+      </Switch>
     </Router>
   );
 }

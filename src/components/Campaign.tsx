@@ -2,6 +2,8 @@ import { ICampaign } from 'models/campaign';
 import React from 'react';
 import { Utils } from 'utils';
 import 'styles/donation.scss';
+import { Link } from 'react-router-dom';
+import { Path } from 'common';
 
 type CampaignProps = {
   data: ICampaign;
@@ -10,8 +12,8 @@ type CampaignProps = {
 const Campaign = ({ data }: CampaignProps) => {
   const daysLeft = Utils.getDaysLeft(data.end_date);
   return (
-    <div className="col-12 col-sm-6 col-lg-4 mb-5 ">
-      <div className="campaign-dn">
+    <div className="col-12 col-sm-6 col-lg-4 mb-5">
+      <Link to={`${Path.DETAIL}/${data.id}`} className="campaign-dn">
         <div className="campaign-dn-img">
           <img
             src={data.images ? data.images[0] : ''}
@@ -21,7 +23,9 @@ const Campaign = ({ data }: CampaignProps) => {
         </div>
         <div className="campaign-dn-body">
           <h5 className="campaign-dn-title">{Utils.truncate(data.name, 150)}</h5>
-          <p className="campaign-dn-summary">{Utils.truncate(data.description, 200)}</p>
+          <p className="campaign-dn-summary">
+            {Utils.truncate(data.description, 200)}
+          </p>
         </div>
         <div className="campaign-dn-footer">
           <div className="campaign-dn-info">
@@ -88,7 +92,7 @@ const Campaign = ({ data }: CampaignProps) => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

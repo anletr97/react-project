@@ -15,6 +15,20 @@ export class Utils {
       : 0;
   };
 
+  /**
+   * Convert timestamp to date String
+   * @param dateNumber timestamp
+   * @returns Date string with format
+   */
+  static numberToDateString = (dateNumber: number = 0): string => {
+    let date = new Date(dateNumber);
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = date.getDate();
+
+    return day + '/' + month + '/' + year;
+  };
+
   // STRING
   static truncate = (string = '', maxLength = 50) => {
     return string.length > maxLength ? `${string.substring(0, maxLength)}…` : string;
