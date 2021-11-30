@@ -1,15 +1,14 @@
 import campaignApi from 'api/services/campaign';
 import { Layout } from 'components';
+import { useCampaignId } from 'hooks';
 import { ICampaign } from 'models';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { Utils } from 'utils';
 import { DonateList } from './components';
 
 const Detail = () => {
-  const { id } = useParams<{ id: string }>();
+  const id = useCampaignId();
   const [campaign, setCampaign] = useState<Partial<ICampaign>>({});
-
   useEffect(() => {
     const query = async () => {
       const campaign = await getCampaign();
@@ -22,7 +21,7 @@ const Detail = () => {
 
   const getCampaign = async () => {
     let tmpCampaign = { ...campaign };
-    await campaignApi.getCampaignById(parseInt(id)).then((res) => {
+    await campaignApi.getCampaignById(id).then((res) => {
       tmpCampaign = { ...res };
     });
     return tmpCampaign;
