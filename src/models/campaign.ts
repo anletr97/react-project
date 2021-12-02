@@ -10,4 +10,12 @@ export interface ICampaign {
   current_percent_of_donation: number | 0;
   current_numbers_of_donation: number | 0;
   images: string[];
+  summary: ICampaignDetailSummary;
+}
+
+export interface ICampaignDetailSummary {
+  current_percent_of_donation: number;
+  current_numbers_of_donation: number;
+  current_amount_of_money: number;
+  days_left: number;
 }

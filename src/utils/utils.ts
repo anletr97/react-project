@@ -3,7 +3,7 @@ export class Utils {
   static deepCloneArray = (array: any[]) => [...array.map((a) => ({ ...a }))];
 
   // NUMBER
-  static addCommas = (number: number) => {
+  static addCommas = (number?: number) => {
     return number ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0';
   };
 
