@@ -1,5 +1,5 @@
 import { NavItems, Path } from 'common';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'styles/header.css';
 const Navbar = () => {
@@ -31,15 +31,8 @@ const Navbar = () => {
                 ))}
               </div>
               <div className="navbar-nav">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-pink"
-                  data-bs-toggle="modal"
-                  data-bs-target="#form_login"
-                  data-bs-whatever=""
-                >
-                  Đăng nhập
-                </button>
+                <Link to={Path.LOGIN} className="btn btn-primary btn-pink" />
+                Đăng nhập
               </div>
             </div>
           </div>
