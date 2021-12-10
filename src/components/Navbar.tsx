@@ -1,8 +1,22 @@
-import { NavItems, Path } from 'common';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavItems, Path, TOKEN } from 'common';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import 'styles/header.css';
+import { clearToken, getToken } from 'utils';
+
 const Navbar = () => {
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+    const isAuth = getToken() ? true : false;
+    setAuth(isAuth);
+  }, []);
+
+  const logOut = () => {
+    clearToken();
+    setAuth(false);
+  };
+
   return (
     <div>
       <header className="header">
@@ -31,8 +45,19 @@ const Navbar = () => {
                 ))}
               </div>
               <div className="navbar-nav">
-                <Link to={Path.LOGIN} className="btn btn-primary btn-pink" />
-                Đăng nhập
+                {!auth && (
+                  <Link to={Path.LOGIN} className="btn btn-primary btn-pink">
+                    Đăng nhập
+                  </Link>
+                )}
+                {auth && (
+                  <button
+                    className="btn btn-primary btn-pink"
+                    onClick={() => logOut()}
+                  >
+                    Đăng xuất
+                  </button>
+                )}
               </div>
             </div>
           </div>

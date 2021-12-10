@@ -6,21 +6,24 @@ import {
   FormControlLabel,
   Grid,
   Link,
+  Modal,
   TextField,
-  ThemeProvider,
   Typography,
 } from '@material-ui/core';
-import React, { useState } from 'react';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Auth from './Auth';
-import { useTheme } from '@material-ui/styles';
 import authApi from 'api/services/auth';
-import { Redirect } from 'react-router';
+import { TOKEN } from 'common';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+import { setToken } from 'utils/token-utils';
+import Auth from './Auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setLoading] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,17 +31,17 @@ const Login = () => {
       email,
       password,
     };
+    setLoading(true);
+    console.log(isLoading);
 
     authApi.login(body).then((res) => {
-      // TODO confirm what happen when there's access token
-      // Redirect after login
-      console.log(res);
-      if (res?.access_token) {
-        localStorage.setItem('access_token', res.access_token);
-        return <Redirect to="/home" />;
+      if (res) {
+        setLoading(false);
+        setToken(res.access_token);
+        // Redirect after login
+        history.push('/home');
       }
     });
-    return;
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,8 +50,6 @@ const Login = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
-  const theme = useTheme();
 
   return (
     <Auth>
@@ -94,6 +95,7 @@ const Login = () => {
             control={<Checkbox value="remember" color="primary" />}
             label="Ghi nhớ đăng nhập"
           />
+
           <Button type="submit" fullWidth variant="contained">
             Sign In
           </Button>
@@ -111,6 +113,24 @@ const Login = () => {
           </Grid>
         </Box>
       </Box>
+
+      <Modal
+        open={isLoading}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: 400,
+            alignItems: 'center',
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      </Modal>
     </Auth>
   );
 };

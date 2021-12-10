@@ -1,3 +1,5 @@
+import { TOKEN } from 'common';
+
 export class Utils {
   // DATA
   static deepCloneArray = (array: any[]) => [...array.map((a) => ({ ...a }))];
@@ -32,5 +34,11 @@ export class Utils {
   // STRING
   static truncate = (string = '', maxLength = 50) => {
     return string.length > maxLength ? `${string.substring(0, maxLength)}…` : string;
+  };
+
+  // Access token
+  static getToken = () => localStorage.getItem(TOKEN);
+  static setToken = (token: string) => {
+    localStorage.setItem(TOKEN, token);
   };
 }
