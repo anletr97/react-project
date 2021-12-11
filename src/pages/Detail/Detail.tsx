@@ -1,15 +1,19 @@
 import campaignApi from 'api/services/campaign';
-import { Layout } from 'components';
+import { DonateForm, Layout } from 'components';
 import { useCampaignId } from 'hooks';
 import { ICampaign } from 'models';
 import React, { useEffect, useState } from 'react';
-import { Utils } from 'utils';
+import { getToken, Utils } from 'utils';
 import { DonateList } from './components';
 import Carousel from 'nuka-carousel';
+import { useHistory } from 'react-router-dom';
 
 const Detail = () => {
   const id = useCampaignId();
+  const history = useHistory();
   const [campaign, setCampaign] = useState<Partial<ICampaign>>({});
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const query = async () => {
       const campaign = await getCampaign();
@@ -26,6 +30,15 @@ const Detail = () => {
       tmpCampaign = { ...res };
     });
     return tmpCampaign;
+  };
+
+  const toggleModal = () => {
+    // Only login user can donate
+    if (!getToken()) {
+      history.push('/login');
+    } else {
+      setOpen(!open);
+    }
   };
 
   const article = campaign.content || '';
@@ -119,14 +132,13 @@ const Detail = () => {
                         <div className="col">
                           <div className="campaign-cta">
                             <div className="my-2">
-                              <a
+                              <button
                                 className="btn btn-block btn-pink w-100"
-                                href="javascript:void(0)"
-                                target="_blank"
+                                onClick={toggleModal}
                               >
                                 {' '}
                                 Quyên góp{' '}
-                              </a>
+                              </button>
                             </div>
                             <div className="my-2 d-none d-lg-block">
                               <a
@@ -168,6 +180,7 @@ const Detail = () => {
           </div>
         </div>
       </section>
+      <DonateForm open={open} toggleModal={toggleModal} />
     </Layout>
   );
 };

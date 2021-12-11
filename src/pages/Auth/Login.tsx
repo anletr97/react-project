@@ -32,7 +32,6 @@ const Login = () => {
       password,
     };
     setLoading(true);
-    console.log(isLoading);
 
     authApi.login(body).then((res) => {
       if (res) {

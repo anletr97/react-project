@@ -19,3 +19,7 @@ export interface ICampaignDetailSummary {
   current_amount_of_money: number;
   days_left: number;
 }
+
+export interface IDonateBody {
+  amount: number;
+}

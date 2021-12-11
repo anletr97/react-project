@@ -1,8 +1,8 @@
 import campaignApi from 'api/services/campaign';
 import { Campaign, Layout, Summary } from 'components';
 import { defautlCampaignSummary, ICampaign, ICampaignSummary } from 'models';
-import { Utils } from 'utils';
 import React, { useEffect, useState } from 'react';
+import { Utils } from 'utils';
 
 const Home = () => {
   const [campaignList, setCampaignList] = useState<ICampaign[]>([]);

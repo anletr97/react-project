@@ -5,3 +5,4 @@ export { default as Donate } from './Donate';
 export { default as Outro } from './Outro';
 export { default as Footer } from './Footer';
 export { default as Campaign } from './Campaign';
+export { default as DonateForm } from './DonateForm';
