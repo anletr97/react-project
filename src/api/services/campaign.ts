@@ -25,7 +25,7 @@ const campaignApi = {
     const url = `${URL}/${id}/donate`;
     console.log(url, getToken());
 
-    return axiosClient.post(url, body.amount, {
+    return axiosClient.post(url, body, {
       headers: {
         Authorization: getToken(),
       },
