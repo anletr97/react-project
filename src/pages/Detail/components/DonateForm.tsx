@@ -1,13 +1,13 @@
 import {
-    Button,
-    CircularProgress,
-    Container,
-    createStyles,
-    FormControl,
-    makeStyles,
-    Modal,
-    Theme,
-    Typography
+  Button,
+  CircularProgress,
+  Container,
+  createStyles,
+  FormControl,
+  makeStyles,
+  Modal,
+  Theme,
+  Typography,
 } from '@material-ui/core';
 import campaignApi from 'api/services/campaign';
 import { useCampaignId } from 'hooks';
@@ -54,27 +54,22 @@ const useStyles = makeStyles((theme: Theme) =>
 export type FormProps = {
   open: boolean;
   toggleModal: () => void;
+  onSubmit: (amount: number) => void;
 };
 
-const DonateForm = ({ open, toggleModal }: FormProps) => {
-  const id = useCampaignId();
+const DonateForm = ({ open, toggleModal, onSubmit }: FormProps) => {
   const [amount, setAmount] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const body = { amount: parseInt(amount) };
-    setLoading(true);
-    campaignApi.donateToCampaignId(body, id).then((res) => {
-      if (res) {
-        console.log(res);
-        toggleModal();
-      }
-    });
-  };
-
   const handleChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target?.value?.replaceAll(',', '').replaceAll(' VND', ''));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    onSubmit(parseInt(amount));
+    setLoading(false);
   };
 
   const classes = useStyles();
@@ -89,7 +84,7 @@ const DonateForm = ({ open, toggleModal }: FormProps) => {
         <form
           className={classes.form}
           autoComplete="off"
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         >
           <FormControl

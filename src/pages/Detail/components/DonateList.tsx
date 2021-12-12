@@ -5,25 +5,11 @@ import React, { useEffect, useState } from 'react';
 import 'styles/detail.scss';
 import { Utils } from 'utils';
 
-const DonateList = () => {
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
-  const id = useCampaignId();
-  useEffect(() => {
-    const getTransaction = async () => {
-      const list = await getTransactionsById();
-      setTransactions(list);
-    };
-    getTransaction();
-  }, []);
+export type ListProps = {
+  transactions: ITransaction[];
+};
 
-  const getTransactionsById = async () => {
-    let arr: any[] = [];
-    await campaignApi.getTransactionsById(id).then((res) => {
-      arr = Utils.deepCloneArray(res);
-    });
-    return arr;
-  };
-
+const DonateList = ({ transactions }: ListProps) => {
   return (
     <div id="nhahaotam" className="ds-nhahaotam ng-scope">
       <div className="donation__detail__heading has-border-top">

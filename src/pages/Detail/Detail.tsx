@@ -1,19 +1,25 @@
 import campaignApi from 'api/services/campaign';
-import { DonateForm, Layout } from 'components';
+import { Layout } from 'components';
 import { useCampaignId } from 'hooks';
-import { ICampaign } from 'models';
+import { ICampaign, ITransaction } from 'models';
 import React, { useEffect, useState } from 'react';
 import { getToken, Utils } from 'utils';
-import { DonateList } from './components';
+import { DonateList, DonateForm } from './components';
 import Carousel from 'nuka-carousel';
 import { useHistory } from 'react-router-dom';
+import { Snackbar } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 
 const Detail = () => {
+  const [campaign, setCampaign] = useState<Partial<ICampaign>>({});
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [open, setOpen] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+
   const id = useCampaignId();
   const history = useHistory();
-  const [campaign, setCampaign] = useState<Partial<ICampaign>>({});
-  const [open, setOpen] = useState(false);
 
+  // Fetch campaign detail
   useEffect(() => {
     const query = async () => {
       const campaign = await getCampaign();
@@ -32,6 +38,36 @@ const Detail = () => {
     return tmpCampaign;
   };
 
+  // Fetch donate List
+  useEffect(() => {
+    const getTransaction = async () => {
+      const list = await getTransactionsById();
+      setTransactions(list);
+    };
+    getTransaction();
+  }, []);
+
+  const getTransactionsById = async () => {
+    let arr: any[] = [];
+    await campaignApi.getTransactionsById(id).then((res) => {
+      arr = Utils.deepCloneArray(res);
+    });
+    return arr;
+  };
+
+  // Donate
+  const donate = async (amount: number) => {
+    const body = { amount };
+    campaignApi.donateToCampaignId(body, id).then((res) => {
+      if (res) {
+        setTransactions([res, ...transactions]);
+        toggleModal();
+        toggleMessage();
+      }
+    });
+  };
+
+  // Open/Close donate form
   const toggleModal = () => {
     // Only login user can donate
     if (!getToken()) {
@@ -39,6 +75,11 @@ const Detail = () => {
     } else {
       setOpen(!open);
     }
+  };
+
+  // Display message
+  const toggleMessage = () => {
+    setShowMessage(!showMessage);
   };
 
   const article = campaign.content || '';
@@ -173,14 +214,19 @@ const Detail = () => {
                       </div>
                     </div>
                   </div>
-                  <DonateList />
+                  <DonateList transactions={transactions} />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <DonateForm open={open} toggleModal={toggleModal} />
+      <DonateForm open={open} toggleModal={toggleModal} onSubmit={donate} />
+      <Snackbar open={showMessage} autoHideDuration={2000} onClose={toggleMessage}>
+        <Alert onClose={toggleMessage} severity="success" style={{ width: '100%' }}>
+          Bạn đã quyên góp thành công!
+        </Alert>
+      </Snackbar>
     </Layout>
   );
 };
