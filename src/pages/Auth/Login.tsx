@@ -95,8 +95,13 @@ const Login = () => {
             label="Ghi nhớ đăng nhập"
           />
 
-          <Button type="submit" fullWidth variant="contained">
-            Sign In
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            style={{ backgroundColor: '#c0145e', color: '#fff' }}
+          >
+            Đăng nhập
           </Button>
           <Grid container>
             <Grid item xs>

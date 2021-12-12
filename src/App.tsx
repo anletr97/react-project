@@ -1,6 +1,7 @@
 import { Detail, Home } from 'pages';
 import Login from 'pages/Auth/Login';
 import SignUp from 'pages/Auth/SignUp';
+import Success from 'pages/Auth/Success';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/charity-campaigns/:id" component={Detail} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/signup" component={SignUp} exact />
+        <Route path="/success" component={Success} exact />
       </Switch>
     </Router>
   );

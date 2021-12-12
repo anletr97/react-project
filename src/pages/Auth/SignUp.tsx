@@ -3,6 +3,8 @@ import {
   Box,
   Button,
   CircularProgress,
+  Grid,
+  Link,
   Modal,
   Snackbar,
   TextField,
@@ -11,8 +13,11 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Alert } from '@material-ui/lab';
 import authApi from 'api/services/auth';
+import { FULL_NAME, Path } from 'common';
 import React, { useState } from 'react';
 import Auth from './Auth';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import { useHistory } from 'react-router-dom';
 
 const SignUp = () => {
   const [isLoading, setLoading] = useState(false);
@@ -23,6 +28,8 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const history = useHistory();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validatePassword()) {
@@ -30,18 +37,18 @@ const SignUp = () => {
       return;
     }
     setLoading(true);
-    // TODO call api
     const body = {
       full_name: fullname,
       email,
       password,
     };
-    // authApi.register(body).then((res) => {
-    //   if (res) {
-    //     // TODO Register successfull redire
-    //   } else {
-    //   }
-    // });
+    authApi.register(body).then((res) => {
+      if (res) {
+        console.log(res);
+        localStorage.setItem(FULL_NAME, res.full_name);
+        history.push('/success');
+      }
+    });
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,12 +90,12 @@ const SignUp = () => {
         }}
       >
         <Avatar>
-          <LockOutlinedIcon />
+          <AccountBoxIcon />
         </Avatar>
-        <Typography component="h1" variant="h3" style={{ padding: '12px' }}>
-          ĐĂNG KÝ
+        <Typography component="h1" variant="h3" style={{ paddingTop: '12px' }}>
+          ĐĂNG KÍ
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit}>
           <TextField
             margin="normal"
             required
@@ -141,6 +148,13 @@ const SignUp = () => {
           >
             Đăng kí
           </Button>
+          <Grid container>
+            <Grid item style={{ padding: '2px' }}>
+              <Link href={Path.LOGIN} variant="body2">
+                {'Đăng nhập'}
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
 
