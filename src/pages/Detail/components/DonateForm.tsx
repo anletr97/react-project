@@ -9,8 +9,6 @@ import {
   Theme,
   Typography,
 } from '@material-ui/core';
-import campaignApi from 'api/services/campaign';
-import { useCampaignId } from 'hooks';
 import React, { useState } from 'react';
 import NumberFormat from 'react-number-format';
 

@@ -2,7 +2,8 @@ export const Path = {
   HOME: '/home',
   ABOUT: '/about',
   DETAIL: 'charity-campaigns',
-  LOGIN: '/login'
+  LOGIN: '/login',
+  SIGNUP: '/signup',
 };
 
 /**

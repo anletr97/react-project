@@ -2,45 +2,46 @@ import {
   Avatar,
   Box,
   Button,
-  Checkbox,
-  FormControlLabel,
-  Grid,
-  Link,
+  CircularProgress,
   Modal,
+  Snackbar,
   TextField,
   Typography,
 } from '@material-ui/core';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Alert } from '@material-ui/lab';
 import authApi from 'api/services/auth';
-import { Path } from 'common';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
-import { setToken } from 'utils/token-utils';
 import Auth from './Auth';
 
-const Login = () => {
+const SignUp = () => {
+  const [isLoading, setLoading] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState('');
+  const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setLoading] = useState(false);
-  const history = useHistory();
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!validatePassword()) {
+      setShowMessage(true);
+      return;
+    }
+    setLoading(true);
+    // TODO call api
     const body = {
+      full_name: fullname,
       email,
       password,
     };
-    setLoading(true);
-
-    authApi.login(body).then((res) => {
-      if (res) {
-        setLoading(false);
-        setToken(res.access_token);
-        // Redirect after login
-        history.push('/home');
-      }
-    });
+    // authApi.register(body).then((res) => {
+    //   if (res) {
+    //     // TODO Register successfull redire
+    //   } else {
+    //   }
+    // });
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +49,26 @@ const Login = () => {
   };
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
+  };
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleFullnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFullname(e.target.value);
+  };
+
+  const validatePassword = () => {
+    if (password != confirmPassword) {
+      setMessage('Mật khẩu không trùng khớp!');
+      return false;
+    }
+
+    return true;
+  };
+
+  const toggleMessage = () => {
+    setShowMessage(!showMessage);
   };
 
   return (
@@ -65,9 +86,19 @@ const Login = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h3" style={{ padding: '12px' }}>
-          ĐĂNG NHẬP
+          ĐĂNG KÝ
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="full_name"
+            label="Họ tên"
+            name="full_name"
+            autoFocus
+            onChange={handleFullnameChange}
+          />
           <TextField
             margin="normal"
             required
@@ -90,26 +121,26 @@ const Login = () => {
             autoComplete="current-password"
             onChange={handlePasswordChange}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Ghi nhớ đăng nhập"
+
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="confirm_password"
+            label="Xác nhận mật khẩu"
+            type="password"
+            id="confirm_password"
+            onChange={handleConfirmPasswordChange}
           />
 
-          <Button type="submit" fullWidth variant="contained">
-            Sign In
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            style={{ marginTop: '16px', backgroundColor: '#c0145e', color: '#fff' }}
+          >
+            Đăng kí
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Quên mật khẩu?
-              </Link>
-            </Grid>
-            <Grid item style={{ padding: '2px' }}>
-              <Link href={Path.SIGNUP} variant="body2">
-                {'Bạn chưa có tài khoản? Đăng ký ngay!'}
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
       </Box>
 
@@ -130,8 +161,13 @@ const Login = () => {
           <CircularProgress />
         </Box>
       </Modal>
+      <Snackbar open={showMessage} autoHideDuration={2000} onClose={toggleMessage}>
+        <Alert onClose={toggleMessage} severity="error" style={{ width: '100%' }}>
+          {message}
+        </Alert>
+      </Snackbar>
     </Auth>
   );
 };
 
-export default Login;
+export default SignUp;

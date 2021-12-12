@@ -1,11 +1,15 @@
 import axiosClient from 'api/axiosClient';
 import API_URL from 'common/constant';
-import { IAuth } from 'models/auth';
+import { IAuth, IAuthRegister } from 'models/auth';
 
-export const service = 'auth';
+export const URL = `${API_URL}auth`;
 const authApi = {
   login(body: IAuth): Promise<any> {
-    return axiosClient.post(`${API_URL}${service}/login`, body);
+    return axiosClient.post(`${URL}/login`, body);
+  },
+
+  register(body: IAuthRegister): Promise<any> {
+    return axiosClient.post(`${URL}/register`, body);
   },
 };
 
